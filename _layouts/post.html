@@ -1,0 +1,101 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="article-layout">
+
+    <!-- ARTICLE MAIN -->
+    <article>
+      <header class="article-header">
+        <div class="article-meta">
+          {% if page.tags %}
+            {% for tag in page.tags limit:2 %}
+              <span class="tag tag-{{ tag }}">{{ tag | upcase }}</span>
+            {% endfor %}
+          {% endif %}
+          <span class="article-date">{{ page.date | date: "%d. %B %Y" }}</span>
+          {% if page.read_time %}<span class="article-read-time">⏱ {{ page.read_time }} Min Lesezeit</span>{% endif %}
+        </div>
+        <h1>{{ page.title }}</h1>
+        {% if page.lead %}
+          <p class="lead">{{ page.lead }}</p>
+        {% endif %}
+      </header>
+
+      <div class="article-content">
+        {{ content }}
+      </div>
+
+      <!-- Artikel-Footer -->
+      <div style="margin-top:40px;padding:24px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border);">
+        <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:12px;">🕷️ Mehr von Spaiderman</div>
+        <p style="font-size:14px;color:var(--text2);margin-bottom:16px;">Täglich kostenlose Crypto & AI Briefings — direkt in deinen Telegram.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="{{ site.author.telegram }}" target="_blank" class="btn-affiliate" style="flex:none;min-width:auto;">📡 Newsletter abonnieren (gratis)</a>
+          <a href="https://x.com/24Spaiderman7" target="_blank" class="btn-compare">🐦 Follow on X</a>
+          <a href="{{ site.author.kofi }}" target="_blank" class="btn-compare">☕ Ko-fi</a>
+        </div>
+      </div>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside>
+      <!-- Newsletter CTA -->
+      <div class="sidebar-widget telegram-cta">
+        <div class="widget-title">📡 Kostenloser Newsletter</div>
+        <p>5x täglich Crypto & AI Briefings. Kein Spam. Keine Werbung. Einfach clean signal.</p>
+        <a href="{{ site.author.telegram }}" target="_blank" class="btn-affiliate" style="display:block;text-align:center;">
+          Jetzt gratis abonnieren
+        </a>
+      </div>
+
+      <!-- Empfohlene Tools -->
+      <div class="sidebar-widget">
+        <div class="widget-title">🛡️ Empfohlene Tools</div>
+        <ul class="affiliate-list">
+          <li>
+            <a href="{{ site.affiliate.ledger }}" target="_blank">
+              🔒 Ledger Nano X
+              <span class="aff-commission">10%</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ site.affiliate.trezor }}" target="_blank">
+              🔒 Trezor Model T
+              <span class="aff-commission">12%</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ site.affiliate.koinly }}" target="_blank">
+              📊 Koinly (Crypto Tax)
+              <span class="aff-commission">20%</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ site.affiliate.tradingview }}" target="_blank">
+              📈 TradingView
+              <span class="aff-commission">30%</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ site.affiliate.nordvpn }}" target="_blank">
+              🔐 NordVPN
+              <span class="aff-commission">40%</span>
+            </a>
+          </li>
+        </ul>
+        <p style="font-size:10px;color:var(--text3);margin-top:10px;font-style:italic;">*Affiliate-Links · Für dich kostenlos</p>
+      </div>
+
+      <!-- Ko-fi -->
+      <div class="sidebar-widget kofi-widget">
+        <div class="widget-title">☕ Support Spaiderman</div>
+        <p>Dieser Content ist kostenlos. Ein Kaffee hält den Spider-Sense scharf. 🕷️</p>
+        <a href="{{ site.author.kofi }}" target="_blank" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:10px;">☕ Kaffee spendieren</a>
+      </div>
+    </aside>
+
+  </div>
+</div>

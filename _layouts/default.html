@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — {{ site.description }}{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="author" content="{{ site.author.name }}">
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="{{ site.author.twitter }}">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <!-- Canonical -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕷️</text></svg>">
+  {% seo %}
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ '/' | relative_url }}" class="logo">
+      <span class="logo-spider">🕷️</span>
+      <span class="logo-text">SPAIDERMAN</span>
+    </a>
+    <nav class="header-nav">
+      <a href="{{ '/' | relative_url }}" class="nav-link">Blog</a>
+      <a href="{{ '/crypto' | relative_url }}" class="nav-link">Crypto</a>
+      <a href="{{ '/ai-tools' | relative_url }}" class="nav-link">AI Tools</a>
+      <a href="{{ '/about' | relative_url }}" class="nav-link">Über</a>
+      <a href="{{ site.author.telegram }}" class="nav-link nav-cta" target="_blank">📡 Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+  {{ content }}
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:22px;filter:drop-shadow(0 0 6px rgba(227,24,55,0.4));">🕷️</span>
+          <span style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;background:linear-gradient(135deg,#E31837,#FF6B6B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">SPAIDERMAN</span>
+        </div>
+        <p>Daily Crypto & AI Intel. No FUD. No Paywalls. Just clean signal from your friendly neighborhood Spaiderman.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Content</div>
+        <ul class="footer-links">
+          <li><a href="{{ '/crypto' | relative_url }}">🪙 Crypto Guides</a></li>
+          <li><a href="{{ '/ai-tools' | relative_url }}">🤖 AI Tools Reviews</a></li>
+          <li><a href="{{ '/security' | relative_url }}">🔐 Security & Privacy</a></li>
+          <li><a href="{{ '/about' | relative_url }}">👤 Über Spaiderman</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Community</div>
+        <ul class="footer-links">
+          <li><a href="{{ site.author.telegram }}" target="_blank">📡 Telegram Newsletter</a></li>
+          <li><a href="https://x.com/24Spaiderman7" target="_blank">🐦 X / Twitter</a></li>
+          <li><a href="https://www.threads.net/@24spaiderman7" target="_blank">🧵 Threads</a></li>
+          <li><a href="{{ site.author.kofi }}" target="_blank">☕ Ko-fi</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Spaiderman · "With great data comes great responsibility."</div>
+      <div class="footer-disclaimer">*Dieser Blog enthält Affiliate-Links. Beim Kauf über diese Links erhalte ich eine kleine Provision — für dich ohne Mehrkosten. Das hilft, den Newsletter kostenlos zu halten.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

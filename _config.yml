@@ -1,0 +1,59 @@
+# ── Spaiderman Blog — Jekyll Konfiguration ─────────────────────────────────
+title: "Spaiderman"
+description: "Daily Crypto & AI Intel — No FUD. Just Facts."
+baseurl: ""
+url: "https://yunghundse.24spaiderman7.github.io"   # ← HIER deinen GitHub-Username eintragen
+
+# Autor
+author:
+  name: "Spaiderman"
+  twitter: "@24Spaiderman7"
+  threads: "@24spaiderman7"
+  telegram: "https://t.me/SpaidermanNewsBot"
+  kofi: "https://ko-fi.com/spaiderman"
+
+# Affiliate Links — NUR HIER ÄNDERN
+affiliate:
+  ledger:     "https://shop.ledger.com/?r=DEIN_LEDGER_CODE"        # ← Ledger Affiliate
+  trezor:     "https://affil.trezor.io/DEIN_TREZOR_CODE"           # ← Trezor Affiliate
+  koinly:     "https://koinly.io/?via=DEIN_KOINLY_CODE"            # ← Koinly Affiliate
+  tradingview: "https://www.tradingview.com/?aff_id=DEIN_TV_CODE"  # ← TradingView Affiliate
+  nordvpn:    "https://nordvpn.com/DEIN_NORDVPN_CODE"              # ← NordVPN Affiliate
+  amazon:     "https://www.amazon.de/?tag=DEIN_AMAZON_TAG"         # ← Amazon Associates
+
+# Jekyll Einstellungen
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+highlighter: rouge
+
+# Plugins (GitHub Pages kompatibel)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO
+lang: "de"
+google_analytics: ""   # ← Google Analytics ID eintragen wenn vorhanden
+
+# Collections
+collections:
+  posts:
+    output: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Spaiderman"
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - SETUP_ANLEITUNG.md
+  - node_modules

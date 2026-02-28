@@ -1,0 +1,144 @@
+---
+layout: default
+title: "Spaiderman — Daily Crypto & AI Intel"
+description: "Spaiderman: Dein tägliches Briefing zu Crypto, Bitcoin, Ethereum, KI und Tech. Keine FUD. Nur Facts."
+---
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">🕷️ Daily Intel · No FUD</div>
+  <h1 class="hero-title">
+    Crypto & AI Wissen,<br>
+    das <span class="accent">Spaiderman</span> dir bringt
+  </h1>
+  <p class="hero-subtitle">
+    Reviews, Guides und tägliche Briefings — kostenlos, klar und ohne Bullshit.
+    Für alle die im Crypto- und KI-Space vorne bleiben wollen.
+  </p>
+  <div class="hero-ctas">
+    <a href="https://t.me/SpaidermanNewsBot" target="_blank" class="btn-primary">
+      📡 Newsletter abonnieren — gratis
+    </a>
+    <a href="#artikel" class="btn-secondary">Artikel lesen ↓</a>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:14px 0;">
+  <div class="container" style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
+      <span>📡</span> Tägliche Briefings
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
+      <span>🔒</span> Kein Paywall
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
+      <span>💰</span> Ehrliche Reviews
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
+      <span>🕷️</span> Kein FUD
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
+      <span>✅</span> Affiliate-transparent
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<section id="artikel">
+  <div class="container">
+    <div class="main-grid">
+
+      <!-- ARTICLES -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;">Neueste Artikel</div>
+          <div style="font-size:12px;color:var(--text3);">{{ site.posts.size }} Artikel</div>
+        </div>
+
+        {% for post in site.posts %}
+        <article class="article-card">
+          <div class="article-card-inner">
+            <div class="article-meta">
+              {% for tag in post.tags limit:2 %}
+                <span class="tag tag-{{ tag }}">{{ tag | upcase }}</span>
+              {% endfor %}
+              <span class="article-date">{{ post.date | date: "%d.%m.%Y" }}</span>
+              {% if post.read_time %}<span class="article-read-time">⏱ {{ post.read_time }} Min</span>{% endif %}
+            </div>
+            <h2 class="article-title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h2>
+            <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+            <a href="{{ post.url | relative_url }}" class="read-more">Weiterlesen →</a>
+          </div>
+        </article>
+        {% endfor %}
+
+        {% if site.posts.size == 0 %}
+        <div style="text-align:center;padding:60px 20px;color:var(--text3);">
+          <div style="font-size:48px;margin-bottom:16px;">🕷️</div>
+          <div style="font-size:16px;">Erste Artikel werden bald veröffentlicht.</div>
+        </div>
+        {% endif %}
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside>
+        <!-- Newsletter -->
+        <div class="sidebar-widget telegram-cta">
+          <div class="widget-title">📡 Täglich kostenlos</div>
+          <p>Crypto & AI Briefings direkt in deinen Telegram. 5x täglich. Gratis.</p>
+          <a href="https://t.me/SpaidermanNewsBot" target="_blank" class="btn-affiliate" style="display:block;text-align:center;margin-bottom:8px;">
+            Jetzt abonnieren
+          </a>
+          <p style="font-size:11px;color:var(--text3);text-align:center;margin:0;">Kein Spam · Jederzeit abmelbar</p>
+        </div>
+
+        <!-- Top Tools -->
+        <div class="sidebar-widget">
+          <div class="widget-title">🛡️ Spaiderman-Empfehlungen</div>
+          <ul class="affiliate-list">
+            <li>
+              <a href="{{ site.affiliate.ledger }}" target="_blank">
+                🔒 Ledger Nano X <span class="aff-commission">Best Pick</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ site.affiliate.trezor }}" target="_blank">
+                🔒 Trezor Model T
+              </a>
+            </li>
+            <li>
+              <a href="{{ site.affiliate.koinly }}" target="_blank">
+                📊 Koinly (Steuern)
+              </a>
+            </li>
+            <li>
+              <a href="{{ site.affiliate.tradingview }}" target="_blank">
+                📈 TradingView Pro
+              </a>
+            </li>
+            <li>
+              <a href="{{ site.affiliate.nordvpn }}" target="_blank">
+                🔐 NordVPN
+              </a>
+            </li>
+          </ul>
+          <p style="font-size:10px;color:var(--text3);margin-top:10px;font-style:italic;">*Affiliate-Links · Für dich ohne Mehrkosten</p>
+        </div>
+
+        <!-- Social -->
+        <div class="sidebar-widget">
+          <div class="widget-title">🌐 Folge Spaiderman</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="https://x.com/24Spaiderman7" target="_blank" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">🐦 X — @24Spaiderman7</a>
+            <a href="https://www.threads.net/@24spaiderman7" target="_blank" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">🧵 Threads</a>
+            <a href="{{ site.author.kofi }}" target="_blank" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">☕ Ko-fi</a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
