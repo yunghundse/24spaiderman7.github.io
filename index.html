@@ -1,144 +1,434 @@
 ---
 layout: default
 title: "Spaiderman — Daily Crypto & AI Intel"
-description: "Spaiderman: Dein tägliches Briefing zu Crypto, Bitcoin, Ethereum, KI und Tech. Keine FUD. Nur Facts."
+description: "Daily Crypto & AI Intel. No FUD. Just facts."
 ---
 
-<!-- HERO -->
+<!-- ══ HERO ═══════════════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-eyebrow">🕷️ Daily Intel · No FUD</div>
-  <h1 class="hero-title">
-    Crypto & AI Wissen,<br>
-    das <span class="accent">Spaiderman</span> dir bringt
+  <h1 class="hero-title de-only">
+    Crypto & KI-Wissen,<br>das <span class="accent">Spaiderman</span> dir bringt
   </h1>
-  <p class="hero-subtitle">
-    Reviews, Guides und tägliche Briefings — kostenlos, klar und ohne Bullshit.
-    Für alle die im Crypto- und KI-Space vorne bleiben wollen.
+  <h1 class="hero-title en-only">
+    Crypto & AI Intelligence<br>from <span class="accent">Spaiderman</span>
+  </h1>
+  <p class="hero-subtitle de-only">
+    7 tägliche Briefings, Reviews und Guides — kostenlos, klar, kein Bullshit.<br>
+    Für alle, die im Crypto- und KI-Space vorne bleiben wollen.
+  </p>
+  <p class="hero-subtitle en-only">
+    7 daily briefings, reviews and guides — free, clear, no BS.<br>
+    For everyone who wants to stay ahead in the Crypto & AI space.
   </p>
   <div class="hero-ctas">
-    <a href="https://t.me/SpaidermanNewsBot" target="_blank" class="btn-primary">
-      📡 Newsletter abonnieren — gratis
+    <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="btn-primary">
+      <span class="de-only">📡 Newsletter abonnieren — gratis</span>
+      <span class="en-only">📡 Subscribe Newsletter — free</span>
     </a>
-    <a href="#artikel" class="btn-secondary">Artikel lesen ↓</a>
+    <a href="#live-ticker-section" class="btn-secondary">
+      <span class="de-only">⚡ Live Preise ↓</span>
+      <span class="en-only">⚡ Live Prices ↓</span>
+    </a>
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div style="background:var(--surface);border-bottom:1px solid var(--border);padding:14px 0;">
-  <div class="container" style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
-      <span>📡</span> Tägliche Briefings
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
-      <span>🔒</span> Kein Paywall
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
-      <span>💰</span> Ehrliche Reviews
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
-      <span>🕷️</span> Kein FUD
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text3);">
-      <span>✅</span> Affiliate-transparent
-    </div>
+<!-- ══ TRUST BAR ══════════════════════════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="trust-items">
+    <div class="trust-item"><span>📡</span> <span class="de-only">7× täglich</span><span class="en-only">7× daily</span></div>
+    <div class="trust-item"><span>🔒</span> <span class="de-only">Keine Paywall</span><span class="en-only">No Paywall</span></div>
+    <div class="trust-item"><span>💰</span> <span class="de-only">Ehrliche Reviews</span><span class="en-only">Honest Reviews</span></div>
+    <div class="trust-item"><span>🕷️</span> <span>No FUD</span></div>
+    <div class="trust-item"><span>🌐</span> <span>DE / EN</span></div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
-<section id="artikel">
-  <div class="container">
-    <div class="main-grid">
+<!-- ══ LIVE TICKER ════════════════════════════════════════════════════════ -->
+<section class="section-block" id="live-ticker-section">
+  <div class="section-header">
+    <h2 class="section-title">
+      <span class="dot-live"></span>
+      <span class="de-only">⚡ Live Preise</span>
+      <span class="en-only">⚡ Live Prices</span>
+    </h2>
+    <div class="refresh-row">
+      <span class="update-label" id="ticker-time">--:--</span>
+      <button class="btn-refresh" onclick="loadTicker()" title="Aktualisieren">🔄</button>
+    </div>
+  </div>
+  <div id="ticker-grid" class="ticker-grid">
+    <div class="loading-state">
+      <span class="de-only">Preise werden geladen…</span>
+      <span class="en-only">Loading prices…</span>
+    </div>
+  </div>
+  <p class="ticker-note de-only">Daten von CoinGecko · aktualisiert alle 60 Sekunden</p>
+  <p class="ticker-note en-only">Data from CoinGecko · updates every 60 seconds</p>
+</section>
 
-      <!-- ARTICLES -->
+<!-- ══ NEWS FEED ═════════════════════════════════════════════════════════ -->
+<section class="section-block" id="news-section">
+  <div class="section-header">
+    <h2 class="section-title">
+      <span class="de-only">📰 Crypto & KI News</span>
+      <span class="en-only">📰 Crypto & AI News</span>
+    </h2>
+    <div class="refresh-row">
+      <span class="countdown-label" id="news-countdown" title="Nächste Aktualisierung / Next refresh">5:00</span>
+      <button class="btn-refresh" onclick="loadNews()" title="Jetzt aktualisieren">🔄</button>
+    </div>
+  </div>
+  <div id="news-grid" class="news-grid">
+    <div class="loading-state">
+      <span class="de-only">News werden geladen…</span>
+      <span class="en-only">Loading news…</span>
+    </div>
+  </div>
+  <p class="ticker-note de-only">Quelle: CoinTelegraph · automatische Aktualisierung alle 5 Minuten</p>
+  <p class="ticker-note en-only">Source: CoinTelegraph · auto-refresh every 5 minutes</p>
+</section>
+
+<!-- ══ TELEGRAM CTA ═══════════════════════════════════════════════════════ -->
+<section class="cta-strip">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <span class="cta-icon">📡</span>
       <div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;">Neueste Artikel</div>
-          <div style="font-size:12px;color:var(--text3);">{{ site.posts.size }} Artikel</div>
-        </div>
-
-        {% for post in site.posts %}
-        <article class="article-card">
-          <div class="article-card-inner">
-            <div class="article-meta">
-              {% for tag in post.tags limit:2 %}
-                <span class="tag tag-{{ tag }}">{{ tag | upcase }}</span>
-              {% endfor %}
-              <span class="article-date">{{ post.date | date: "%d.%m.%Y" }}</span>
-              {% if post.read_time %}<span class="article-read-time">⏱ {{ post.read_time }} Min</span>{% endif %}
-            </div>
-            <h2 class="article-title">
-              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </h2>
-            <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
-            <a href="{{ post.url | relative_url }}" class="read-more">Weiterlesen →</a>
-          </div>
-        </article>
-        {% endfor %}
-
-        {% if site.posts.size == 0 %}
-        <div style="text-align:center;padding:60px 20px;color:var(--text3);">
-          <div style="font-size:48px;margin-bottom:16px;">🕷️</div>
-          <div style="font-size:16px;">Erste Artikel werden bald veröffentlicht.</div>
-        </div>
-        {% endif %}
+        <div class="cta-title de-only">7 Posts täglich — direkt auf Telegram</div>
+        <div class="cta-title en-only">7 posts daily — straight to Telegram</div>
+        <div class="cta-sub de-only">07:00 Wake · 09:00 Briefing · 11:00 KI-Spot · 13:00 Lunch · 16:00 Analyse · 19:00 Tech · 20:00 Abend</div>
+        <div class="cta-sub en-only">07:00 Wake · 09:00 Briefing · 11:00 AI Spot · 13:00 Lunch · 16:00 Analysis · 19:00 Tech · 20:00 Evening</div>
       </div>
+    </div>
+    <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="btn-telegram">
+      <span class="de-only">🕷️ Jetzt starten</span>
+      <span class="en-only">🕷️ Start Now</span>
+    </a>
+  </div>
+</section>
 
-      <!-- SIDEBAR -->
-      <aside>
-        <!-- Newsletter -->
-        <div class="sidebar-widget telegram-cta">
-          <div class="widget-title">📡 Täglich kostenlos</div>
-          <p>Crypto & AI Briefings direkt in deinen Telegram. 5x täglich. Gratis.</p>
-          <a href="https://t.me/SpaidermanNewsBot" target="_blank" class="btn-affiliate" style="display:block;text-align:center;margin-bottom:8px;">
-            Jetzt abonnieren
+<!-- ══ KO-FI ══════════════════════════════════════════════════════════════ -->
+<section class="section-block" id="kofi-section">
+  <div class="kofi-card">
+    <div class="kofi-left">
+      <div class="kofi-emoji">☕</div>
+      <div>
+        <h3 class="kofi-title de-only">Spaiderman einen Kaffee spendieren</h3>
+        <h3 class="kofi-title en-only">Buy Spaiderman a Coffee</h3>
+        <p class="kofi-text de-only">
+          Alle Analysen, alle Posts, alle 7 täglichen Broadcasts — 100% kostenlos.<br>
+          Wenn dir das hilft: ein Kaffee hält die Spinne am Netz. 🕸️
+        </p>
+        <p class="kofi-text en-only">
+          All analyses, all posts, all 7 daily broadcasts — 100% free.<br>
+          If this helps you: a coffee keeps the spider spinning. 🕸️
+        </p>
+        <div class="kofi-buttons">
+          <a href="https://ko-fi.com/spaiderman" target="_blank" rel="noopener" class="btn-kofi">
+            ☕ ko-fi.com/spaiderman
           </a>
-          <p style="font-size:11px;color:var(--text3);text-align:center;margin:0;">Kein Spam · Jederzeit abmelbar</p>
+          <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="btn-kofi-secondary">
+            <span class="de-only">📡 Gratis Newsletter</span>
+            <span class="en-only">📡 Free Newsletter</span>
+          </a>
         </div>
-
-        <!-- Top Tools -->
-        <div class="sidebar-widget">
-          <div class="widget-title">🛡️ Spaiderman-Empfehlungen</div>
-          <ul class="affiliate-list">
-            <li>
-              <a href="{{ site.affiliate.ledger }}" target="_blank">
-                🔒 Ledger Nano X <span class="aff-commission">Best Pick</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{ site.affiliate.trezor }}" target="_blank">
-                🔒 Trezor Model T
-              </a>
-            </li>
-            <li>
-              <a href="{{ site.affiliate.koinly }}" target="_blank">
-                📊 Koinly (Steuern)
-              </a>
-            </li>
-            <li>
-              <a href="{{ site.affiliate.tradingview }}" target="_blank">
-                📈 TradingView Pro
-              </a>
-            </li>
-            <li>
-              <a href="{{ site.affiliate.nordvpn }}" target="_blank">
-                🔐 NordVPN
-              </a>
-            </li>
-          </ul>
-          <p style="font-size:10px;color:var(--text3);margin-top:10px;font-style:italic;">*Affiliate-Links · Für dich ohne Mehrkosten</p>
-        </div>
-
-        <!-- Social -->
-        <div class="sidebar-widget">
-          <div class="widget-title">🌐 Folge Spaiderman</div>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <a href="https://x.com/24Spaiderman7" target="_blank" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">🐦 X — @24Spaiderman7</a>
-            <a href="https://www.threads.net/@24spaiderman7" target="_blank" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">🧵 Threads</a>
-            <a href="{{ site.author.kofi }}" target="_blank" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">☕ Ko-fi</a>
-          </div>
-        </div>
-      </aside>
-
+      </div>
+    </div>
+    <div class="kofi-right">
+      <div class="kofi-stat">
+        <span class="kofi-stat-num">7×</span>
+        <span class="kofi-stat-label de-only">täglich</span>
+        <span class="kofi-stat-label en-only">daily</span>
+      </div>
+      <div class="kofi-stat">
+        <span class="kofi-stat-num">0€</span>
+        <span class="kofi-stat-label de-only">Paywall</span>
+        <span class="kofi-stat-label en-only">Paywall</span>
+      </div>
+      <div class="kofi-stat">
+        <span class="kofi-stat-num">∞</span>
+        <span class="kofi-stat-label de-only">Signal</span>
+        <span class="kofi-stat-label en-only">Signal</span>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ══ SOCIAL LINKS ═══════════════════════════════════════════════════════ -->
+<section class="section-block" id="social-section">
+  <h2 class="section-title" style="margin-bottom:20px;">
+    <span class="de-only">🌐 Folge Spaiderman</span>
+    <span class="en-only">🌐 Follow Spaiderman</span>
+  </h2>
+  <div class="social-grid">
+
+    <a href="https://x.com/24Spaiderman7" target="_blank" rel="noopener" class="social-card social-x">
+      <div class="social-icon">𝕏</div>
+      <div class="social-info">
+        <div class="social-name">X / Twitter</div>
+        <div class="social-handle">@24Spaiderman7</div>
+        <div class="social-desc de-only">Schnelle Updates &amp; Hot Takes</div>
+        <div class="social-desc en-only">Fast updates &amp; hot takes</div>
+      </div>
+      <div class="social-arrow">→</div>
+    </a>
+
+    <a href="https://www.threads.com/@24spaiderman7" target="_blank" rel="noopener" class="social-card social-threads">
+      <div class="social-icon">🧵</div>
+      <div class="social-info">
+        <div class="social-name">Threads</div>
+        <div class="social-handle">@24spaiderman7</div>
+        <div class="social-desc de-only">Deep Dives &amp; Meinungen</div>
+        <div class="social-desc en-only">Deep dives &amp; opinions</div>
+      </div>
+      <div class="social-arrow">→</div>
+    </a>
+
+    <a href="https://www.instagram.com/24spaiderman7" target="_blank" rel="noopener" class="social-card social-insta">
+      <div class="social-icon">📸</div>
+      <div class="social-info">
+        <div class="social-name">Instagram</div>
+        <div class="social-handle">@24spaiderman7</div>
+        <div class="social-desc de-only">Visuals, Charts &amp; Stories</div>
+        <div class="social-desc en-only">Visuals, charts &amp; stories</div>
+      </div>
+      <div class="social-arrow">→</div>
+    </a>
+
+    <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="social-card social-tg">
+      <div class="social-icon">📡</div>
+      <div class="social-info">
+        <div class="social-name">Telegram</div>
+        <div class="social-handle">SpaidermanNewsBot</div>
+        <div class="social-desc de-only">7× täglich · kostenlos</div>
+        <div class="social-desc en-only">7× daily · free newsletter</div>
+      </div>
+      <div class="social-arrow">→</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ══ BLOG POSTS ═════════════════════════════════════════════════════════ -->
+<section class="section-block" id="artikel">
+  <div class="section-header" style="margin-bottom:20px;">
+    <h2 class="section-title">
+      <span class="de-only">📝 Neueste Artikel</span>
+      <span class="en-only">📝 Latest Articles</span>
+    </h2>
+    <span style="font-size:12px;color:var(--text3);">{{ site.posts.size }}
+      <span class="de-only">Artikel</span><span class="en-only">articles</span>
+    </span>
+  </div>
+
+  {% if site.posts.size > 0 %}
+  <div class="main-grid">
+    <div>
+      {% for post in site.posts %}
+      <article class="article-card">
+        <div class="article-card-inner">
+          <div class="article-meta">
+            {% for tag in post.tags limit:2 %}
+              <span class="tag tag-{{ tag }}">{{ tag | upcase }}</span>
+            {% endfor %}
+            <span class="article-date">{{ post.date | date: "%d.%m.%Y" }}</span>
+            {% if post.read_time %}<span class="article-read-time">⏱ {{ post.read_time }} Min</span>{% endif %}
+          </div>
+          <h2 class="article-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h2>
+          <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+          <a href="{{ post.url | relative_url }}" class="read-more">
+            <span class="de-only">Weiterlesen →</span>
+            <span class="en-only">Read more →</span>
+          </a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside>
+      <div class="sidebar-widget telegram-cta">
+        <div class="widget-title de-only">📡 7× täglich kostenlos</div>
+        <div class="widget-title en-only">📡 7× daily for free</div>
+        <p class="de-only">Crypto &amp; KI Briefings direkt in deinen Telegram. 7× täglich. Gratis.</p>
+        <p class="en-only">Crypto &amp; AI briefings straight to your Telegram. 7× daily. Free.</p>
+        <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="btn-affiliate" style="display:block;text-align:center;margin-bottom:8px;">
+          <span class="de-only">Jetzt abonnieren</span>
+          <span class="en-only">Subscribe now</span>
+        </a>
+        <p style="font-size:11px;color:var(--text3);text-align:center;margin:0;">
+          <span class="de-only">Kein Spam · Jederzeit abmelbar</span>
+          <span class="en-only">No spam · Unsubscribe anytime</span>
+        </p>
+      </div>
+
+      <div class="sidebar-widget">
+        <div class="widget-title">🛡️ <span class="de-only">Spaiderman-Empfehlungen</span><span class="en-only">Spaiderman Picks</span></div>
+        <ul class="affiliate-list">
+          <li><a href="{{ site.affiliate.ledger }}" target="_blank" rel="noopener">🔒 Ledger Nano X <span class="aff-commission">Best Pick</span></a></li>
+          <li><a href="{{ site.affiliate.trezor }}" target="_blank" rel="noopener">🔒 Trezor Model T</a></li>
+          <li><a href="{{ site.affiliate.koinly }}" target="_blank" rel="noopener">📊 Koinly (<span class="de-only">Steuern</span><span class="en-only">Tax</span>)</a></li>
+          <li><a href="{{ site.affiliate.tradingview }}" target="_blank" rel="noopener">📈 TradingView Pro</a></li>
+          <li><a href="{{ site.affiliate.nordvpn }}" target="_blank" rel="noopener">🔐 NordVPN</a></li>
+        </ul>
+        <p style="font-size:10px;color:var(--text3);margin-top:10px;font-style:italic;">
+          <span class="de-only">*Affiliate-Links · Für dich ohne Mehrkosten</span>
+          <span class="en-only">*Affiliate links · No extra cost for you</span>
+        </p>
+      </div>
+
+      <div class="sidebar-widget">
+        <div class="widget-title">🌐 <span class="de-only">Folge Spaiderman</span><span class="en-only">Follow Spaiderman</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="https://x.com/24Spaiderman7" target="_blank" rel="noopener" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">𝕏 @24Spaiderman7</a>
+          <a href="https://www.threads.com/@24spaiderman7" target="_blank" rel="noopener" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">🧵 Threads</a>
+          <a href="https://www.instagram.com/24spaiderman7" target="_blank" rel="noopener" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">📸 Instagram</a>
+          <a href="{{ site.author.kofi }}" target="_blank" rel="noopener" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">☕ Ko-fi</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  {% else %}
+  <div style="text-align:center;padding:60px 20px;color:var(--text3);">
+    <div style="font-size:48px;margin-bottom:16px;">🕷️</div>
+    <div class="de-only">Erste Artikel werden bald veröffentlicht.</div>
+    <div class="en-only">First articles coming soon.</div>
+  </div>
+  {% endif %}
+</section>
+
+<!-- ══ JAVASCRIPT ═════════════════════════════════════════════════════════ -->
+<script>
+/* ── CONFIG ──────────────────────────────────────────────────────────────── */
+const COINS = ['bitcoin','ethereum','solana','binancecoin','cardano','avalanche-2','chainlink'];
+const COIN_META = {
+  'bitcoin':     {sym:'BTC', emoji:'₿'},
+  'ethereum':    {sym:'ETH', emoji:'Ξ'},
+  'solana':      {sym:'SOL', emoji:'◎'},
+  'binancecoin': {sym:'BNB', emoji:'🔶'},
+  'cardano':     {sym:'ADA', emoji:'🔵'},
+  'avalanche-2': {sym:'AVAX',emoji:'🔺'},
+  'chainlink':   {sym:'LINK',emoji:'🔗'},
+};
+const NEWS_RSS = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fcointelegraph.com%2Frss&count=9';
+const REFRESH_SECS = 300; // 5 minutes for news
+
+let newsCountdownSecs = REFRESH_SECS;
+let countdownInterval;
+
+/* ── HELPERS ─────────────────────────────────────────────────────────────── */
+function getLang() { return document.body.classList.contains('lang-en') ? 'en' : 'de'; }
+
+function fmtPrice(price) {
+  if (price >= 100) return '$' + price.toLocaleString('en-US', {maximumFractionDigits:0});
+  if (price >= 1)   return '$' + price.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+  return '$' + price.toLocaleString('en-US', {minimumFractionDigits:4, maximumFractionDigits:6});
+}
+
+function timeAgo(date) {
+  const secs = Math.floor((Date.now() - date.getTime()) / 1000);
+  const lang = getLang();
+  if (secs < 60)    return lang==='de' ? 'gerade eben' : 'just now';
+  if (secs < 3600)  return lang==='de' ? `vor ${Math.floor(secs/60)} Min.` : `${Math.floor(secs/60)}m ago`;
+  if (secs < 86400) return lang==='de' ? `vor ${Math.floor(secs/3600)} Std.` : `${Math.floor(secs/3600)}h ago`;
+  return lang==='de' ? `vor ${Math.floor(secs/86400)} Tagen` : `${Math.floor(secs/86400)}d ago`;
+}
+
+/* ── LIVE TICKER ─────────────────────────────────────────────────────────── */
+async function loadTicker() {
+  const grid = document.getElementById('ticker-grid');
+  const ids = COINS.join(',');
+  try {
+    const res = await fetch(
+      `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`
+    );
+    if (!res.ok) throw new Error('API ' + res.status);
+    const data = await res.json();
+
+    const now = new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('ticker-time').textContent = now;
+
+    grid.innerHTML = COINS.map(id => {
+      const d = data[id]; if (!d) return '';
+      const meta = COIN_META[id] || {sym: id.toUpperCase(), emoji:''};
+      const chg = d.usd_24h_change || 0;
+      const up = chg >= 0;
+      return `<div class="ticker-card ${up?'ticker-up':'ticker-down'}">
+        <div class="ticker-symbol">${meta.sym}</div>
+        <div class="ticker-price">${fmtPrice(d.usd)}</div>
+        <div class="ticker-change ${up?'positive':'negative'}">${up?'▲':'▼'} ${Math.abs(chg).toFixed(2)}%</div>
+      </div>`;
+    }).join('');
+  } catch(e) {
+    const lang = getLang();
+    grid.innerHTML = `<div class="load-error">
+      ${lang==='de'
+        ? 'Preise konnten nicht geladen werden — <button class="link-btn" onclick="loadTicker()">Erneut versuchen</button>'
+        : 'Could not load prices — <button class="link-btn" onclick="loadTicker()">Try again</button>'}
+    </div>`;
+  }
+}
+
+/* ── NEWS FEED ───────────────────────────────────────────────────────────── */
+async function loadNews() {
+  const grid = document.getElementById('news-grid');
+  newsCountdownSecs = REFRESH_SECS;
+  grid.classList.add('news-refreshing');
+  try {
+    const res = await fetch(NEWS_RSS);
+    if (!res.ok) throw new Error('RSS ' + res.status);
+    const data = await res.json();
+    const items = (data.items || []).slice(0, 9);
+    if (!items.length) throw new Error('empty');
+
+    grid.innerHTML = items.map(item => {
+      const date = new Date(item.pubDate);
+      const ago = timeAgo(date);
+      const img = item.thumbnail || (item.enclosure && item.enclosure.link) || '';
+      const clean = (item.description || '').replace(/<[^>]+>/g,'').substring(0,120);
+      return `<a class="news-card" href="${item.link}" target="_blank" rel="noopener noreferrer">
+        <div class="news-thumb" style="${img ? `background-image:url('${img}')` : 'background:var(--surface3)'}">
+          ${!img ? '<span style="font-size:28px;line-height:1">📰</span>' : ''}
+        </div>
+        <div class="news-body">
+          <div class="news-title">${item.title}</div>
+          ${clean ? `<div class="news-excerpt">${clean}…</div>` : ''}
+          <div class="news-meta">${ago} · CoinTelegraph</div>
+        </div>
+      </a>`;
+    }).join('');
+  } catch(e) {
+    const lang = getLang();
+    grid.innerHTML = `<div class="load-error">
+      ${lang==='de'
+        ? `News konnten nicht geladen werden — <a href="https://cointelegraph.com" target="_blank" rel="noopener">CoinTelegraph direkt öffnen →</a>`
+        : `Could not load news — <a href="https://cointelegraph.com" target="_blank" rel="noopener">Open CoinTelegraph directly →</a>`}
+    </div>`;
+  }
+  grid.classList.remove('news-refreshing');
+}
+
+function startCountdown() {
+  clearInterval(countdownInterval);
+  countdownInterval = setInterval(() => {
+    newsCountdownSecs = Math.max(0, newsCountdownSecs - 1);
+    if (newsCountdownSecs === 0) { loadNews(); newsCountdownSecs = REFRESH_SECS; }
+    const m = Math.floor(newsCountdownSecs / 60);
+    const s = newsCountdownSecs % 60;
+    const el = document.getElementById('news-countdown');
+    if (el) el.textContent = `${m}:${s.toString().padStart(2,'0')}`;
+  }, 1000);
+}
+
+/* ── INIT ────────────────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  loadTicker();
+  loadNews();
+  startCountdown();
+  setInterval(loadTicker, 60000); // Ticker every 60s
+});
+</script>
