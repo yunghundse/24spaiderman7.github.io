@@ -574,6 +574,77 @@
     background: transparent;
   }
   .partner-mailto-alt:hover { opacity: .85; transform: translateY(-1px); background: rgba(255,80,80,.08); }
+  /* ── Why Spaiderman section ── */
+  .why-section {
+    padding: 3.5rem 1.5rem 2.5rem;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .schedule-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .45rem;
+    margin: 1.8rem auto 0;
+    max-width: 620px;
+  }
+  .sched-slot {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+    padding: .5rem .75rem;
+    font-size: .7rem;
+    text-align: center;
+    min-width: 70px;
+    transition: border-color .2s, transform .2s;
+  }
+  .sched-slot:hover { border-color: rgba(255,80,80,.4); transform: translateY(-2px); }
+  .sched-slot .sched-time { display: block; font-size: .8rem; font-weight: 700; color: var(--red); margin-bottom: .15rem; }
+  .sched-slot .sched-label { display: block; color: var(--muted); font-size: .65rem; line-height: 1.3; }
+  .sched-note {
+    font-size: .7rem; color: var(--muted); margin-top: .8rem;
+    display: flex; align-items: center; justify-content: center; gap: .3rem;
+  }
+  .usp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: .9rem;
+    margin: 2rem 0 1.5rem;
+    text-align: left;
+  }
+  .usp-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px;
+    padding: 1rem 1rem .9rem;
+    transition: border-color .2s, transform .2s;
+  }
+  .usp-card:hover { border-color: rgba(255,80,80,.3); transform: translateY(-2px); }
+  .usp-icon { font-size: 1.4rem; display: block; margin-bottom: .4rem; }
+  .usp-title { font-size: .82rem; font-weight: 700; color: var(--text); margin-bottom: .25rem; }
+  .usp-desc { font-size: .72rem; color: var(--muted); line-height: 1.5; }
+  .vs-table {
+    width: 100%; max-width: 580px; margin: 2rem auto 0;
+    border-collapse: collapse; font-size: .72rem;
+    border-radius: 12px; overflow: hidden;
+  }
+  .vs-table th {
+    background: var(--card); padding: .55rem .7rem;
+    font-weight: 700; color: var(--muted); text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  .vs-table th.vs-sp { color: var(--red); font-size: .78rem; }
+  .vs-table td {
+    padding: .5rem .7rem; text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    color: var(--muted);
+  }
+  .vs-table tr td:first-child { text-align: left; color: var(--text); font-weight: 500; }
+  .vs-table td.yes { color: #4ade80; font-weight: 700; }
+  .vs-table td.no  { color: #ef4444; }
+  .vs-table td.partial { color: #facc15; }
+  .vs-table tr:last-child td { border-bottom: none; }
   .partner-section {
     padding: 3rem 1.25rem;
     text-align: center;
@@ -1214,6 +1285,87 @@ Tap a button to see what I can do.</span>
   };
 })();
 </script>
+
+<!-- ════════════════════════════════════════════════
+     WHY SPAIDERMAN
+════════════════════════════════════════════════ -->
+<section class="why-section" id="why">
+  <div class="section-eyebrow" data-de="Warum Spaiderman?" data-en="Why Spaiderman?">Why Spaiderman?</div>
+  <h2 data-de="Nicht nur ein Newsletter.<br><em>Dein Bot.</em>" data-en="Not just a newsletter.<br><em>Your bot.</em>">Not just a newsletter.<br><em>Your bot.</em></h2>
+  <p class="body-text" style="max-width:460px;margin:0 auto 1rem"
+     data-de="7 Briefings täglich — immer zur richtigen Zeit in deiner Zeitzone. Kein Spam. Kein Paywall. KI-kuratiert aus 15+ Quellen."
+     data-en="7 briefings a day — always at the right time in your timezone. No spam. No paywall. AI-curated from 15+ sources.">
+    7 briefings a day — always at the right time in your timezone. No spam. No paywall. AI-curated from 15+ sources.
+  </p>
+
+  <!-- Daily schedule -->
+  <div class="schedule-strip">
+    <div class="sched-slot"><span class="sched-time">7:00</span><span class="sched-label">🌅 Wake-up<br>Snapshot</span></div>
+    <div class="sched-slot"><span class="sched-time">9:00</span><span class="sched-label">☀️ Morning<br>Briefing</span></div>
+    <div class="sched-slot"><span class="sched-time">11:00</span><span class="sched-label">🤖 AI<br>Spotlight</span></div>
+    <div class="sched-slot"><span class="sched-time">13:00</span><span class="sched-label">🍕 Lunch<br>Check</span></div>
+    <div class="sched-slot"><span class="sched-time">16:00</span><span class="sched-label">📊 Analysis<br>Spot</span></div>
+    <div class="sched-slot"><span class="sched-time">19:00</span><span class="sched-label">⚡ Tech<br>Minute</span></div>
+    <div class="sched-slot"><span class="sched-time">20:00</span><span class="sched-label">🌙 Evening<br>Wrap</span></div>
+  </div>
+  <p class="sched-note">🌍 <span data-de="Alle Zeiten in deiner lokalen Zeitzone — nicht Serverzeit." data-en="All times in your local timezone — not server time.">All times in your local timezone — not server time.</span></p>
+
+  <!-- USP cards -->
+  <div class="usp-grid">
+    <div class="usp-card">
+      <span class="usp-icon">🤖</span>
+      <div class="usp-title" data-de="KI-Analyse" data-en="AI Analysis">AI Analysis</div>
+      <div class="usp-desc" data-de="Jedes Briefing enthält Spaiderman's Take — eine KI-generierte Markteinschätzung, keine Copy-Paste Headlines." data-en="Every briefing includes Spaiderman's Take — an AI-generated market insight, not just copy-pasted headlines.">Every briefing includes Spaiderman's Take — an AI-generated market insight, not just copy-pasted headlines.</div>
+    </div>
+    <div class="usp-card">
+      <span class="usp-icon">📡</span>
+      <div class="usp-title" data-de="15+ Quellen" data-en="15+ Sources">15+ Sources</div>
+      <div class="usp-desc" data-de="CoinDesk, CoinTelegraph, The Block, MIT Tech Review, VentureBeat — täglich automatisch gescannt und gefiltert." data-en="CoinDesk, CoinTelegraph, The Block, MIT Tech Review, VentureBeat — automatically scanned and filtered daily.">CoinDesk, CoinTelegraph, The Block, MIT Tech Review, VentureBeat — automatically scanned and filtered daily.</div>
+    </div>
+    <div class="usp-card">
+      <span class="usp-icon">🌍</span>
+      <div class="usp-title" data-de="Timezone-aware" data-en="Timezone-aware">Timezone-aware</div>
+      <div class="usp-desc" data-de="Berlin, Dubai, Singapur oder New York — du bekommst dein Briefing genau zu DEINER 9 Uhr, nicht der des Servers." data-en="Berlin, Dubai, Singapore or New York — you get your briefing at YOUR 9am, not the server's.">Berlin, Dubai, Singapore or New York — you get your briefing at YOUR 9am, not the server's.</div>
+    </div>
+    <div class="usp-card">
+      <span class="usp-icon">🎓</span>
+      <div class="usp-title" data-de="Crypto Academy" data-en="Crypto Academy">Crypto Academy</div>
+      <div class="usp-desc" data-de="Integrierte Lernmodule direkt im Bot: Bitcoin, Ethereum, DeFi, Staking, On-Chain — einfach erklärt, täglich verfügbar." data-en="Built-in learning modules in the bot: Bitcoin, Ethereum, DeFi, staking, on-chain analysis — explained simply.">Built-in learning modules in the bot: Bitcoin, Ethereum, DeFi, staking, on-chain analysis — explained simply.</div>
+    </div>
+    <div class="usp-card">
+      <span class="usp-icon">🔐</span>
+      <div class="usp-title" data-de="Kryptografisch signiert" data-en="Cryptographically signed">Cryptographically signed</div>
+      <div class="usp-desc" data-de="Jede Ausgabe trägt eine HMAC-SHA256-Signatur — du erkennst sofort ob eine Nachricht wirklich von Spaiderman stammt." data-en="Every edition carries an HMAC-SHA256 signature — instantly verifiable as genuine Spaiderman.">Every edition carries an HMAC-SHA256 signature — instantly verifiable as genuine Spaiderman.</div>
+    </div>
+    <div class="usp-card">
+      <span class="usp-icon">💸</span>
+      <div class="usp-title" data-de="100% kostenlos" data-en="100% free">100% free</div>
+      <div class="usp-desc" data-de="Kein Paywall. Kein Tracking. Keine Werbung. Server in Deutschland (Hetzner), DSGVO-konform. Für die Community." data-en="No paywall. No tracking. No ads. Germany servers (Hetzner), GDPR-compliant. Built for the community.">No paywall. No tracking. No ads. Germany servers (Hetzner), GDPR-compliant. Built for the community.</div>
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <table class="vs-table">
+    <thead>
+      <tr>
+        <th style="text-align:left" data-de="Feature" data-en="Feature">Feature</th>
+        <th class="vs-sp">🕷️ Spaiderman</th>
+        <th>Morning Brew</th>
+        <th>TLDR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td data-de="Kostenlos" data-en="Free">Free</td><td class="yes">✅</td><td class="partial">partly</td><td class="yes">✅</td></tr>
+      <tr><td data-de="Kein Tracking" data-en="No tracking">No tracking</td><td class="yes">✅</td><td class="no">❌</td><td class="no">❌</td></tr>
+      <tr><td data-de="Deine Zeitzone" data-en="Your timezone">Your timezone</td><td class="yes">✅</td><td class="no">❌</td><td class="no">❌</td></tr>
+      <tr><td data-de="Interaktiver Bot" data-en="Interactive bot">Interactive bot</td><td class="yes">✅</td><td class="no">❌</td><td class="no">❌</td></tr>
+      <tr><td data-de="KI-Marktanalyse" data-en="AI market analysis">AI market analysis</td><td class="yes">✅</td><td class="no">❌</td><td class="partial">basic</td></tr>
+      <tr><td data-de="Crypto + AI Fokus" data-en="Crypto + AI focus">Crypto + AI focus</td><td class="yes">✅</td><td class="partial">general</td><td class="partial">tech only</td></tr>
+      <tr><td data-de="7× täglich" data-en="7× daily">7× daily</td><td class="yes">✅</td><td class="no">1× only</td><td class="no">1× only</td></tr>
+      <tr><td data-de="Crypto Academy" data-en="Crypto Academy">Crypto Academy</td><td class="yes">✅</td><td class="no">❌</td><td class="no">❌</td></tr>
+    </tbody>
+  </table>
+</section>
 
 <div class="div"></div>
 
