@@ -1,434 +1,1518 @@
----
-layout: default
-title: "Spaiderman — Daily Crypto & AI Intel"
-description: "Daily Crypto & AI Intel. No FUD. Just facts."
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spaiderman — Crypto & AI Briefings</title>
+<meta name="description" content="Crypto & AI news daily in English and German. Free via Telegram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:     #e63946;
+    --red-dim: rgba(230,57,70,.15);
+    --dark:    #09090f;
+    --darker:  #050508;
+    --card:    #0f0f18;
+    --card2:   #141420;
+    --border:  #1c1c2e;
+    --border2: #252535;
+    --text:    #ececf4;
+    --sub:     #9090a8;
+    --muted:   #55556a;
+    --gold:    #FFDD00;
+  }
 
-<!-- ══ HERO ═══════════════════════════════════════════════════════════════ -->
-<section class="hero">
-  <div class="hero-eyebrow">🕷️ Daily Intel · No FUD</div>
-  <h1 class="hero-title de-only">
-    Crypto & KI-Wissen,<br>das <span class="accent">Spaiderman</span> dir bringt
-  </h1>
-  <h1 class="hero-title en-only">
-    Crypto & AI Intelligence<br>from <span class="accent">Spaiderman</span>
-  </h1>
-  <p class="hero-subtitle de-only">
-    7 tägliche Briefings, Reviews und Guides — kostenlos, klar, kein Bullshit.<br>
-    Für alle, die im Crypto- und KI-Space vorne bleiben wollen.
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── LANG SWITCHER ──────────────────────────── */
+  .lang-switch {
+    position: fixed;
+    top: 1.1rem;
+    right: 1.1rem;
+    z-index: 200;
+    display: flex;
+    background: rgba(15,15,24,.85);
+    border: 1px solid var(--border2);
+    border-radius: 100px;
+    padding: .2rem;
+    backdrop-filter: blur(12px);
+    gap: .15rem;
+  }
+
+  .lang-btn {
+    background: none;
+    border: none;
+    color: var(--sub);
+    font-family: 'Inter', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    padding: .35rem .75rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+
+  .lang-btn.active {
+    background: var(--red);
+    color: #fff;
+  }
+
+  /* ─── HERO ───────────────────────────────────── */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--darker);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(230,57,70,.15) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 30% at 85% 105%, rgba(230,57,70,.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 25% at 10% 100%, rgba(100,80,230,.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* subtle grid */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  .spider-wrap {
+    position: relative;
+    margin-bottom: 1.75rem;
+    z-index: 1;
+  }
+
+  .web-thread {
+    position: absolute;
+    top: -72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 72px;
+    background: linear-gradient(to bottom, transparent, rgba(230,57,70,.4));
+  }
+
+  .spider-icon {
+    font-size: clamp(4.5rem, 20vw, 7.5rem);
+    line-height: 1;
+    display: block;
+    filter: drop-shadow(0 0 50px rgba(230,57,70,.55));
+    animation: glow-pulse 3.5s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%,100% { filter: drop-shadow(0 0 32px rgba(230,57,70,.45)); transform: scale(1); }
+    50%      { filter: drop-shadow(0 0 72px rgba(230,57,70,.85)); transform: scale(1.035); }
+  }
+
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    background: var(--red-dim);
+    border: 1px solid rgba(230,57,70,.28);
+    color: var(--red);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding: .38rem .95rem;
+    border-radius: 100px;
+    margin-bottom: 1.35rem;
+    z-index: 1;
+  }
+
+  .live-dot {
+    width: 6px; height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: blink 1.6s infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes blink {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:.25; transform:scale(.75); }
+  }
+
+  h1 {
+    font-size: clamp(3rem, 13vw, 6rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -.04em;
+    margin-bottom: .7rem;
+    z-index: 1;
+  }
+
+  h1 em { font-style:normal; color: var(--red); }
+
+  .hero-tagline {
+    font-size: clamp(.9rem, 3.2vw, 1.15rem);
+    color: var(--sub);
+    max-width: 440px;
+    margin: 0 auto 2.75rem;
+    font-weight: 400;
+    z-index: 1;
+    line-height: 1.5;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+    width: 100%;
+    max-width: 320px;
+    z-index: 1;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .65rem;
+    padding: 1.05rem 1.5rem;
+    border-radius: 14px;
+    font-size: .97rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .2s ease, filter .15s ease;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn:active { transform: scale(.97) !important; }
+
+  .btn-red {
+    background: var(--red);
+    color: #fff;
+    box-shadow: 0 4px 28px rgba(230,57,70,.38);
+  }
+  .btn-red:hover { box-shadow: 0 6px 44px rgba(230,57,70,.6); transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: rgba(255,255,255,.05);
+    color: var(--text);
+    border: 1px solid var(--border2);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,.09); transform: translateY(-2px); }
+
+  .btn-coffee {
+    background: var(--gold);
+    color: #111;
+  }
+  .btn-coffee:hover { filter: brightness(1.06); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    color: var(--muted);
+    font-size: .67rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    z-index: 1;
+    animation: bob 2.2s ease-in-out infinite;
+  }
+
+  @keyframes bob {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(7px); }
+  }
+
+  /* ─── SECTIONS ───────────────────────────────── */
+  .section {
+    padding: 4.5rem 1.5rem;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: .67rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: .8rem;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 6.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -.025em;
+    margin-bottom: 1.15rem;
+  }
+
+  h2 em { font-style:normal; color: var(--red); }
+
+  .body-text {
+    color: var(--sub);
+    font-size: .93rem;
+    margin-bottom: .85rem;
+    line-height: 1.7;
+  }
+
+  /* ─── FEATURE CARDS ──────────────────────────── */
+  .features { padding: 3rem 1.5rem; max-width: 580px; margin: 0 auto; }
+
+  .feat-grid {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .feat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    transition: border-color .2s, transform .2s;
+  }
+
+  .feat-card:hover { border-color: rgba(230,57,70,.35); transform: translateX(4px); }
+
+  .feat-emoji { font-size: 1.55rem; line-height: 1; flex-shrink: 0; margin-top: .05rem; }
+
+  .feat-body h3 {
+    font-size: .93rem;
+    font-weight: 700;
+    margin-bottom: .2rem;
+    color: var(--text);
+  }
+
+  .feat-body p { font-size: .83rem; color: var(--sub); margin: 0; }
+
+  /* ─── STATS BAR ──────────────────────────────── */
+  .stats-bar {
+    padding: 2.5rem 1.5rem;
+    max-width: 580px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .85rem;
+  }
+
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.35rem .75rem;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+    letter-spacing: -.03em;
+  }
+
+  .stat-label {
+    font-size: .7rem;
+    color: var(--sub);
+    margin-top: .4rem;
+    font-weight: 500;
+  }
+
+  /* ─── HOW IT WORKS ───────────────────────────── */
+  .steps { padding: 3rem 1.5rem; max-width: 580px; margin: 0 auto; }
+
+  .step {
+    display: flex;
+    gap: 1.15rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-num {
+    width: 36px; height: 36px;
+    background: var(--red-dim);
+    border: 1px solid rgba(230,57,70,.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red);
+    font-size: .8rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: .1rem;
+  }
+
+  .step-text h3 { font-size: .93rem; font-weight: 700; margin-bottom: .2rem; }
+  .step-text p { font-size: .83rem; color: var(--sub); margin: 0; }
+
+  /* ─── BLOG ───────────────────────────────────── */
+  .blog { padding: 4rem 1.5rem; max-width: 580px; margin: 0 auto; }
+
+  .post {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+
+  .post:hover { border-color: rgba(230,57,70,.32); }
+
+  .post::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--red);
+    border-radius: 3px 0 0 3px;
+  }
+
+  .post-date {
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: .55rem;
+  }
+
+  .post h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: .5rem;
+    color: var(--text);
+  }
+
+  .post p { font-size: .84rem; color: var(--sub); margin: 0; }
+
+  .post-tag {
+    display: inline-block;
+    background: var(--red-dim);
+    color: var(--red);
+    font-size: .63rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .22rem .55rem;
+    border-radius: 6px;
+    margin-top: .85rem;
+  }
+
+  .more-hint {
+    text-align: center;
+    color: var(--muted);
+    font-size: .73rem;
+    letter-spacing: .06em;
+    padding: .75rem 0;
+  }
+
+  /* ─── SOCIAL ─────────────────────────────────── */
+  .social { padding: 3.5rem 1.5rem 4rem; max-width: 580px; margin: 0 auto; }
+
+  .link-list { display: flex; flex-direction: column; gap: .7rem; }
+
+  .soc-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    color: var(--text);
+    font-size: .9rem;
+    font-weight: 600;
+    transition: border-color .2s, transform .15s;
+  }
+
+  .soc-link:hover { border-color: rgba(230,57,70,.4); transform: translateX(5px); }
+  .soc-link .icon { font-size: 1.25rem; flex-shrink: 0; }
+  .soc-link .label { flex: 1; }
+  .soc-link .handle { color: var(--muted); font-size: .8rem; font-weight: 400; }
+  .soc-link .arr { color: var(--muted); font-size: .85rem; }
+
+  .soc-link.coffee {
+    border-color: rgba(255,221,0,.25);
+    background: rgba(255,221,0,.04);
+  }
+  .soc-link.coffee:hover { border-color: rgba(255,221,0,.5); }
+  .soc-link.coffee .label { color: var(--gold); }
+
+  /* ─── DIVIDER ─────────────────────────────────── */
+  .div {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border2), transparent);
+    margin: 0 auto;
+    max-width: 580px;
+  }
+
+  /* ─── FOOTER ─────────────────────────────────── */
+  footer {
+    background: var(--darker);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    color: var(--sub);
+    font-size: .8rem;
+  }
+
+  footer .foot-icon { font-size: 2.2rem; margin-bottom: .6rem; display: block; }
+  footer strong { color: var(--text); }
+  footer .foot-legal { color: var(--muted); font-size: .68rem; margin-top: .85rem; }
+  footer .red { color: var(--red); }
+
+  /* ─── FLOATING CTA ───────────────────────────── */
+  .float-btn {
+    position: fixed;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 150;
+    white-space: nowrap;
+    border-radius: 100px !important;
+    padding: .9rem 2rem !important;
+    font-size: .88rem !important;
+    box-shadow: 0 8px 36px rgba(230,57,70,.48);
+    animation: rise .55s ease .4s both;
+  }
+
+  @keyframes rise {
+    from { opacity:0; transform: translateX(-50%) translateY(20px); }
+    to   { opacity:1; transform: translateX(-50%) translateY(0); }
+  }
+
+  /* spacer */
+  .spacer { height: 5rem; }
+
+  /* ─── LANGUAGES ─────────────────────────────── */
+  .lang-section { padding: 3rem 1.5rem; max-width: 580px; margin: 0 auto; }
+
+  .lang-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-top: 1.25rem;
+  }
+
+  .lang-pill {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .55rem 1rem;
+    border-radius: 100px;
+    font-size: .8rem;
+    font-weight: 700;
+    border: 1px solid var(--border2);
+  }
+
+  .lang-pill.live {
+    background: var(--red-dim);
+    border-color: rgba(230,57,70,.35);
+    color: var(--text);
+  }
+
+  .lang-pill.live .dot {
+    width: 6px; height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: blink 1.6s infinite;
+    flex-shrink: 0;
+  }
+
+  .lang-pill.soon {
+    background: rgba(255,255,255,.03);
+    color: var(--muted);
+  }
+
+  .lang-pill.soon .dot {
+    width: 6px; height: 6px;
+    background: var(--muted);
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: .4;
+  }
+
+  /* ─── ROADMAP ─────────────────────────────────── */
+  .roadmap { padding: 3.5rem 1.5rem; max-width: 580px; margin: 0 auto; }
+
+  .idea-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .7rem;
+    margin-top: 1.5rem;
+  }
+
+  .idea-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.1rem 1.1rem .9rem;
+    transition: border-color .2s;
+  }
+
+  .idea-card:hover { border-color: rgba(230,57,70,.3); }
+
+  .idea-icon { font-size: 1.4rem; margin-bottom: .45rem; }
+
+  .idea-card h3 {
+    font-size: .83rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: .2rem;
+    line-height: 1.25;
+  }
+
+  .idea-card p { font-size: .75rem; color: var(--muted); margin: 0; }
+
+  .idea-card.highlight {
+    border-color: rgba(230,57,70,.25);
+    background: linear-gradient(135deg, var(--card) 60%, rgba(230,57,70,.06));
+  }
+
+  /* ─── COMMUNITY ──────────────────────────────── */
+  .community { padding: 3.5rem 1.5rem; max-width: 580px; margin: 0 auto; }
+
+  .coffee-banner {
+    background: linear-gradient(135deg, rgba(255,221,0,.07) 0%, rgba(255,221,0,.02) 100%);
+    border: 1px solid rgba(255,221,0,.2);
+    border-radius: 20px;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .coffee-banner .big-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+
+  .coffee-banner h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: .5rem;
+    line-height: 1.25;
+  }
+
+  .coffee-banner p {
+    font-size: .84rem;
+    color: var(--sub);
+    margin-bottom: 1.25rem;
+  }
+
+  /* ─── IMPRESSUM ──────────────────────────────── */
+  .impressum {
+    padding: 4rem 1.5rem 3rem;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .impressum h2 { margin-bottom: 1.5rem; }
+
+  .imp-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .imp-block h3 {
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: .65rem;
+  }
+
+  .imp-block p, .imp-block a {
+    font-size: .85rem;
+    color: var(--sub);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .imp-block a { color: var(--red); text-decoration: none; }
+  .imp-block a:hover { text-decoration: underline; }
+
+  /* ── TELEGRAM DEMO ── */
+  .demo-section {
+    padding: 3rem 1.25rem;
+    text-align: center;
+  }
+
+  .tg-phone {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    background: #111B21;
+    border-radius: 28px;
+    border: 2px solid #2A3942;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.55);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .tg-header {
+    background: #1F2D33;
+    padding: .7rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    border-bottom: 1px solid #2A3942;
+  }
+
+  .tg-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #e63946 0%, #c1121f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .tg-info { text-align: left; }
+  .tg-name { font-size: .84rem; font-weight: 600; color: #E9EDF0; line-height: 1.2; }
+  .tg-online { font-size: .7rem; color: #4ACF71; }
+
+  .tg-chat {
+    min-height: 230px;
+    max-height: 310px;
+    overflow-y: auto;
+    padding: .75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    background: #111B21;
+    scroll-behavior: smooth;
+  }
+
+  .tg-chat::-webkit-scrollbar { width: 4px; }
+  .tg-chat::-webkit-scrollbar-thumb { background: #2A3942; border-radius: 4px; }
+
+  .tg-msg {
+    max-width: 88%;
+    padding: .48rem .75rem;
+    border-radius: 12px;
+    font-size: .76rem;
+    line-height: 1.55;
+    color: #E9EDF0;
+    white-space: pre-line;
+    word-break: break-word;
+    animation: tgFadeIn .2s ease;
+  }
+
+  @keyframes tgFadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .tg-msg.user {
+    background: #005C4B;
+    align-self: flex-end;
+    border-bottom-right-radius: 3px;
+  }
+
+  .tg-msg.bot {
+    background: #1F2D33;
+    align-self: flex-start;
+    border-bottom-left-radius: 3px;
+  }
+
+  .tg-typing {
+    background: #1F2D33;
+    align-self: flex-start;
+    border-radius: 12px;
+    border-bottom-left-radius: 3px;
+    padding: .55rem .85rem;
+    display: none;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .tg-typing span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8696A0;
+    margin: 0 1px;
+    animation: tgDot 1.2s infinite;
+  }
+  .tg-typing span:nth-child(2) { animation-delay: .22s; }
+  .tg-typing span:nth-child(3) { animation-delay: .44s; }
+
+  @keyframes tgDot {
+    0%, 60%, 100% { transform: translateY(0); opacity: .6; }
+    30%            { transform: translateY(-5px); opacity: 1; }
+  }
+
+  .tg-keyboard {
+    background: #1F2D33;
+    padding: .5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .35rem;
+    border-top: 1px solid #2A3942;
+  }
+
+  .tg-btn {
+    background: #2A3942;
+    border: none;
+    border-radius: 8px;
+    color: #E9EDF0;
+    font-size: .73rem;
+    padding: .55rem .35rem;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    text-align: center;
+    line-height: 1.3;
+    font-family: inherit;
+  }
+
+  .tg-btn:hover  { background: #364B57; }
+  .tg-btn:active { transform: scale(.95); }
+  .tg-btn.full   { grid-column: 1 / -1; }
+  .tg-btn.busy   { opacity: .5; cursor: default; }
+
+  .demo-hint {
+    font-size: .75rem;
+    color: var(--muted);
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── LANGUAGE SWITCHER ── -->
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+  <button class="lang-btn"        onclick="setLang('de')" id="btn-de">DE</button>
+</div>
+
+<!-- ── FLOATING CTA ── -->
+<a href="https://t.me/SpaidermanNewsBot" class="btn btn-red float-btn" target="_blank">
+  <span data-de="🕷️ Jetzt abonnieren" data-en="🕷️ Subscribe free">🕷️ Subscribe free</span>
+</a>
+
+<!-- ════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="spider-wrap">
+    <div class="web-thread"></div>
+    <span class="spider-icon">🕷️</span>
+  </div>
+
+  <div class="live-badge">
+    <div class="live-dot"></div>
+    <span data-de="Live · Täglich aktuell" data-en="Live · Updated daily">Live · Updated daily</span>
+  </div>
+
+  <h1>Sp<em>ai</em>derman</h1>
+
+  <p class="hero-tagline">
+    <span data-de="Dein freundlicher Nachbarschafts-Spaiderman.<br>Krypto &amp; AI — täglich. Kein Hype. Kein Rauschen."
+          data-en="Your friendly neighborhood Sp<em style='font-style:normal;color:var(--red)'>ai</em>derman.<br>Crypto &amp; AI — daily. No noise. No hype.">
+      Your friendly neighborhood Sp<em style="font-style:normal;color:var(--red)">ai</em>derman.<br>Crypto &amp; AI — daily. No noise. No hype.
+    </span>
   </p>
-  <p class="hero-subtitle en-only">
-    7 daily briefings, reviews and guides — free, clear, no BS.<br>
-    For everyone who wants to stay ahead in the Crypto & AI space.
-  </p>
-  <div class="hero-ctas">
-    <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="btn-primary">
-      <span class="de-only">📡 Newsletter abonnieren — gratis</span>
-      <span class="en-only">📡 Subscribe Newsletter — free</span>
+
+  <div class="cta-group">
+    <a href="https://t.me/SpaidermanNewsBot" class="btn btn-red" target="_blank">
+      <span data-de="🕷️ Kostenlos abonnieren" data-en="🕷️ Subscribe for free">🕷️ Subscribe for free</span>
     </a>
-    <a href="#live-ticker-section" class="btn-secondary">
-      <span class="de-only">⚡ Live Preise ↓</span>
-      <span class="en-only">⚡ Live Prices ↓</span>
+    <a href="https://ko-fi.com/spaiderman" class="btn btn-coffee" target="_blank">
+      <span data-de="☕ Kaffee spendieren" data-en="☕ Buy me a coffee">☕ Buy me a coffee</span>
     </a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>↓</span>
+    <span data-de="Mehr" data-en="More">More</span>
   </div>
 </section>
 
-<!-- ══ TRUST BAR ══════════════════════════════════════════════════════════ -->
-<div class="trust-bar">
-  <div class="trust-items">
-    <div class="trust-item"><span>📡</span> <span class="de-only">7× täglich</span><span class="en-only">7× daily</span></div>
-    <div class="trust-item"><span>🔒</span> <span class="de-only">Keine Paywall</span><span class="en-only">No Paywall</span></div>
-    <div class="trust-item"><span>💰</span> <span class="de-only">Ehrliche Reviews</span><span class="en-only">Honest Reviews</span></div>
-    <div class="trust-item"><span>🕷️</span> <span>No FUD</span></div>
-    <div class="trust-item"><span>🌐</span> <span>DE / EN</span></div>
+<!-- ════════════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════════ -->
+<section class="section" id="about">
+  <div class="section-eyebrow" data-de="Was ist das?" data-en="What is this?">What is this?</div>
+
+  <h2 data-de="Kein Newsletter.<br>Dein freundlicher <em>Nachbarschafts-Bot.</em>"
+      data-en="Not a newsletter.<br>Your friendly <em>neighborhood bot.</em>">
+    Not a newsletter.<br>Your friendly <em>neighborhood bot.</em>
+  </h2>
+
+  <p class="body-text"
+     data-de="Peter Parker wurde von einer radioaktiven Spinne gebissen. Ich wurde von einem Krypto-Dip erwischt. Ergebnis: Spaiderman — ein Telegram-Bot der dir täglich das Wichtigste aus Krypto und AI schickt. Kein Rauschen, kein Hype, kein Algorithmus."
+     data-en="Peter Parker got bitten by a radioactive spider. I got wrecked by a crypto dip. Result: Spaiderman — a Telegram bot that sends you the most important crypto and AI news every day. No noise, no hype, no algorithm.">
+    Peter Parker got bitten by a radioactive spider. I got wrecked by a crypto dip. Result: Spaiderman — a Telegram bot that sends you the most important crypto and AI news every day. No noise, no hype, no algorithm.
+  </p>
+
+  <p class="body-text"
+     data-de="Mit großer Marktbewegung kommt große Verantwortung. Du bekommst Live-Kurse, Breaking News und KI-Updates — direkt in deinen Chat. Kostenlos. Kein Spam. Abmelden jederzeit."
+     data-en="With great market data comes great responsibility. You get live prices, breaking news and AI updates — straight into your chat. Free. No spam. Unsubscribe anytime.">
+    With great market data comes great responsibility. You get live prices, breaking news and AI updates — straight into your chat. Free. No spam. Unsubscribe anytime.
+  </p>
+</section>
+
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════
+     FEATURES
+════════════════════════════════════════════════ -->
+<section class="features" id="features">
+  <div class="section-eyebrow" data-de="Was du bekommst" data-en="What you get">What you get</div>
+  <h2 style="margin-bottom:1.5rem" data-de="Alles was <em>zählt.</em>" data-en="Everything that <em>counts.</em>">Everything that <em>counts.</em></h2>
+
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-emoji">☀️</div>
+      <div class="feat-body">
+        <h3 data-de="Morgen-Briefing · 08:00" data-en="Morning Briefing · 8 AM">Morgen-Briefing · 08:00</h3>
+        <p data-de="BTC, ETH, SOL — Live-Kurse + Markt-Stimmung auf einen Blick. Bevor du deinen Kaffee ausgetrunken hast."
+           data-en="BTC, ETH, SOL — live prices + market sentiment at a glance. Before you finish your coffee.">
+          BTC, ETH, SOL — Live-Kurse + Markt-Stimmung auf einen Blick. Bevor du deinen Kaffee ausgetrunken hast.
+        </p>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-emoji">🤖</div>
+      <div class="feat-body">
+        <h3 data-de="KI & AI News auf EN & DE" data-en="AI News in EN & DE">KI & AI News auf EN & DE</h3>
+        <p data-de="The Decoder, t3n, Golem — nur das Relevante, mit kurzer Einschätzung was es für dich bedeutet."
+           data-en="The Decoder, t3n, Golem — only the relevant stuff, with a short take on what it means for you.">
+          The Decoder, t3n, Golem — nur das Relevante, mit kurzer Einschätzung was es für dich bedeutet.
+        </p>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-emoji">📰</div>
+      <div class="feat-body">
+        <h3 data-de="Crypto Breaking Alerts" data-en="Crypto Breaking Alerts">Crypto Breaking Alerts</h3>
+        <p data-de="Wenn der Markt sich bewegt, weißt du es sofort. BTC +5%? ETH -8%? Du bist der Erste."
+           data-en="When the market moves, you know instantly. BTC +5%? ETH -8%? You're first.">
+          Wenn der Markt sich bewegt, weißt du es sofort. BTC +5%? ETH -8%? Du bist der Erste.
+        </p>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-emoji">🌍</div>
+      <div class="feat-body">
+        <h3 data-de="Englisch & Deutsch" data-en="English & German">English & German</h3>
+        <p data-de="Alle Zusammenfassungen auf Englisch und Deutsch. Du wählst deine Sprache."
+           data-en="All summaries available in English and German. You choose your language.">
+          All summaries available in English and German. You choose your language.
+        </p>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-emoji">⚡</div>
+      <div class="feat-body">
+        <h3 data-de="Kostenlos. Immer." data-en="Free. Always.">Kostenlos. Immer.</h3>
+        <p data-de="Kein Abo, kein Paywall. Wenn dir Spaiderman hilft, kannst du mir einen Kaffee spendieren — musst aber nicht."
+           data-en="No subscription, no paywall. If Spaiderman helps you, feel free to buy me a coffee — no pressure.">
+          Kein Abo, kein Paywall. Wenn dir Spaiderman hilft, kannst du mir einen Kaffee spendieren — musst aber nicht.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════
+     TELEGRAM LIVE DEMO
+════════════════════════════════════════════════ -->
+<section class="demo-section" id="demo">
+  <div class="section-eyebrow" data-de="Probier's aus" data-en="Try it live">Try it live</div>
+  <h2 style="margin-bottom:.5rem" data-de="Der Bot. <em>Direkt hier.</em>" data-en="The bot. <em>Right here.</em>">The bot. <em>Right here.</em></h2>
+  <p class="body-text" style="margin-bottom:1.75rem;max-width:460px;margin-left:auto;margin-right:auto"
+     data-de="Klick einen Button — genau so sieht's in Telegram aus."
+     data-en="Tap a button — this is exactly what it looks like in Telegram.">
+    Tap a button — this is exactly what it looks like in Telegram.
+  </p>
+
+  <div class="tg-phone">
+
+    <!-- header -->
+    <div class="tg-header">
+      <div class="tg-avatar">🕷️</div>
+      <div class="tg-info">
+        <div class="tg-name">SpaidermanNewsBot</div>
+        <div class="tg-online" data-de="bot · online" data-en="bot · online">bot · online</div>
+      </div>
+    </div>
+
+    <!-- chat area -->
+    <div class="tg-chat" id="tgChat">
+      <div class="tg-msg bot">
+        <span data-de="👋 Hi! Ich bin Spaiderman 🕷️&#10;&#10;Klick einen Button und sieh was ich kann." data-en="👋 Hi! I'm Spaiderman 🕷️&#10;&#10;Tap a button to see what I can do.">👋 Hi! I'm Spaiderman 🕷️
+
+Tap a button to see what I can do.</span>
+      </div>
+      <div class="tg-typing" id="tgTyping">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- keyboard -->
+    <div class="tg-keyboard">
+      <button class="tg-btn" onclick="tgCmd('prices',this)"  data-de="📊 Live-Kurse"    data-en="📊 Live Prices">📊 Live Prices</button>
+      <button class="tg-btn" onclick="tgCmd('daily',this)"   data-de="🕷️ Daily Intel"   data-en="🕷️ Daily Intel">🕷️ Daily Intel</button>
+      <button class="tg-btn" onclick="tgCmd('ainews',this)"  data-de="🤖 AI News"        data-en="🤖 AI News">🤖 AI News</button>
+      <button class="tg-btn" onclick="tgCmd('crypto',this)"  data-de="🪙 Crypto News"    data-en="🪙 Crypto News">🪙 Crypto News</button>
+      <button class="tg-btn full" onclick="tgCmd('fg',this)" data-de="🌡️ Fear &amp; Greed" data-en="🌡️ Fear &amp; Greed">🌡️ Fear &amp; Greed</button>
+    </div>
+
+  </div>
+
+  <p class="demo-hint" data-de="Demo-Daten · Der echte Bot liefert Live-Preise &amp; aktuelle News" data-en="Demo data · The real bot delivers live prices &amp; current news">Demo data · The real bot delivers live prices &amp; current news</p>
+</section>
+
+<script>
+(function() {
+  var RESPONSES = {
+    prices: {
+      cmd: { de: '📊 Live-Kurse', en: '📊 Live Prices' },
+      reply: {
+        de: '📊 Live-Kurse — 02.03.2026  08:04 CET\n\n₿  BTC  ·  $84.240    📈 +2.3%\nΞ  ETH  ·  $3.512     📈 +1.8%\n◎  SOL  ·  $142       📉 -0.4%\n\n🌡️ Fear & Greed: 72 · Gier\n📈 Markt: Bullisch\n\n/preis für Live-Update',
+        en:  '📊 Live Prices — 02.03.2026  08:04 CET\n\n₿  BTC  ·  $84,240    📈 +2.3%\nΞ  ETH  ·  $3,512     📈 +1.8%\n◎  SOL  ·  $142       📉 -0.4%\n\n🌡️ Fear & Greed: 72 · Greed\n📈 Market: Bullish\n\n/price for live update'
+      }
+    },
+    daily: {
+      cmd: { de: '🕷️ Daily Intel', en: '🕷️ Daily Intel' },
+      reply: {
+        de: '🕷️ Spaiderman Daily Intel\nMontag, 2. März 2026\n\n☀️ Markt-Überblick\nBTC hält $84k — institutionelle Zuflüsse steigen.\n\n🤖 AI-Highlight\nOpenAI veröffentlicht neues Reasoning-Modell.\n\n🪙 Crypto-Flash\nETH ETF Zuflüsse: $380M in 24h.\n\n━━━━━━━━━━━━━━\n💎 Premium: Vollbriefing auf DE+EN\n→ ko-fi.com/spaiderman',
+        en:  '🕷️ Spaiderman Daily Intel\nMonday, 2 March 2026\n\n☀️ Market Overview\nBTC holds $84k — institutional inflows rising.\n\n🤖 AI Highlight\nOpenAI releases new reasoning model.\n\n🪙 Crypto Flash\nETH ETF inflows: $380M in 24h.\n\n━━━━━━━━━━━━━━\n💎 Premium: Full briefing EN+DE\n→ ko-fi.com/spaiderman'
+      }
+    },
+    ainews: {
+      cmd: { de: '🤖 AI News', en: '🤖 AI News' },
+      reply: {
+        de: '🤖 AI News — Heute\n\n1️⃣ OpenAI — GPT-5 Reasoning-Update live.\n→ Bedeutung: Code & Mathe deutlich besser.\n\n2️⃣ Google DeepMind — Gemini 2.0 mit Echtzeit-Suche.\n→ Bedeutung: Direkte Konkurrenz zu Perplexity.\n\n3️⃣ Mistral AI — 7B-Modell schlägt GPT-4 Benchmarks.\n→ Bedeutung: Open Source wächst weiter.\n\n🔗 The Decoder · t3n · Golem',
+        en:  '🤖 AI News — Today\n\n1️⃣ OpenAI — GPT-5 reasoning update is live.\n→ Meaning: Code & math massively improved.\n\n2️⃣ Google DeepMind — Gemini 2.0 with real-time search.\n→ Meaning: Direct competition to Perplexity.\n\n3️⃣ Mistral AI — 7B model beats GPT-4 benchmarks.\n→ Meaning: Open source keeps growing.\n\n🔗 The Decoder · TechCrunch · VentureBeat'
+      }
+    },
+    crypto: {
+      cmd: { de: '🪙 Crypto News', en: '🪙 Crypto News' },
+      reply: {
+        de: '🪙 Crypto Breaking News\n\n🔴 BREAKING — MicroStrategy kauft 5.000 BTC ($421M).\nGesamtbestand: 219.000 BTC.\n\n📊 On-Chain — Bitcoin-Wale akkumulieren.\nBörsenbestände auf 5-Jahres-Tief.\n\n🏛️ Regulierung — EU MiCA: 3 neue CEX-Lizenzen.\n\n⚡ DeFi — TVL steigt auf $112 Mrd.\n\n━━━━━━━━━━━━━━\n🚨 Live-Alerts bei ±5%: /alerts',
+        en:  '🪙 Crypto Breaking News\n\n🔴 BREAKING — MicroStrategy buys 5,000 BTC ($421M).\nTotal holdings: 219,000 BTC.\n\n📊 On-Chain — Bitcoin whales accumulating.\nExchange reserves at 5-year low.\n\n🏛️ Regulation — EU MiCA: 3 new CEX licenses.\n\n⚡ DeFi — TVL rises to $112B.\n\n━━━━━━━━━━━━━━\n🚨 Enable live alerts at ±5%: /alerts'
+      }
+    },
+    fg: {
+      cmd: { de: '🌡️ Fear & Greed', en: '🌡️ Fear & Greed' },
+      reply: {
+        de: '🌡️ Fear & Greed Index\n\nHeute:      ████████░░  72 · 😎 Gier\nGestern:    ███████░░░  68 · 😏 Gier\nLetzte Wo:  █████░░░░░  54 · 😐 Neutral\nLetzter Mo: ████░░░░░░  41 · 😟 Angst\n\n📌 Skala:\n0–24  = Extreme Angst 😱\n25–49 = Angst 😟\n50–74 = Gier 😏\n75–100 = Extreme Gier 🤑\n\n🕷️ Take: Markt ist gierig — historisch ein guter Moment, vorsichtig zu sein.',
+        en:  '🌡️ Fear & Greed Index\n\nToday:      ████████░░  72 · 😎 Greed\nYesterday:  ███████░░░  68 · 😏 Greed\nLast week:  █████░░░░░  54 · 😐 Neutral\nLast month: ████░░░░░░  41 · 😟 Fear\n\n📌 Scale:\n0–24  = Extreme Fear 😱\n25–49 = Fear 😟\n50–74 = Greed 😏\n75–100 = Extreme Greed 🤑\n\n🕷️ Take: Market is greedy — historically a good time to be cautious.'
+      }
+    }
+  };
+
+  var busy = false;
+
+  window.tgCmd = function(cmd, btn) {
+    if (busy) return;
+    busy = true;
+
+    var lang  = document.documentElement.lang || 'en';
+    var chat  = document.getElementById('tgChat');
+    var typing = document.getElementById('tgTyping');
+    var r     = RESPONSES[cmd];
+    if (!r) { busy = false; return; }
+
+    // mark all buttons busy
+    document.querySelectorAll('.tg-btn').forEach(function(b) { b.classList.add('busy'); });
+
+    // user bubble
+    var userBubble = document.createElement('div');
+    userBubble.className = 'tg-msg user';
+    userBubble.textContent = r.cmd[lang] || r.cmd.en;
+    chat.insertBefore(userBubble, typing);
+    chat.scrollTop = chat.scrollHeight;
+
+    // show typing
+    typing.style.display = 'flex';
+    chat.scrollTop = chat.scrollHeight;
+
+    setTimeout(function() {
+      typing.style.display = 'none';
+
+      var botBubble = document.createElement('div');
+      botBubble.className = 'tg-msg bot';
+      botBubble.textContent = r.reply[lang] || r.reply.en;
+      chat.insertBefore(botBubble, typing);
+      chat.scrollTop = chat.scrollHeight;
+
+      document.querySelectorAll('.tg-btn').forEach(function(b) { b.classList.remove('busy'); });
+      busy = false;
+    }, 950);
+  };
+})();
+</script>
+
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════
+     STATS
+════════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-val">2x</div>
+    <div class="stat-label" data-de="täglich" data-en="daily">daily</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">🇩🇪🇬🇧</div>
+    <div class="stat-label" data-de="2 Sprachen" data-en="2 languages">2 languages</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">0€</div>
+    <div class="stat-label" data-de="kostenlos" data-en="free">free</div>
   </div>
 </div>
 
-<!-- ══ LIVE TICKER ════════════════════════════════════════════════════════ -->
-<section class="section-block" id="live-ticker-section">
-  <div class="section-header">
-    <h2 class="section-title">
-      <span class="dot-live"></span>
-      <span class="de-only">⚡ Live Preise</span>
-      <span class="en-only">⚡ Live Prices</span>
-    </h2>
-    <div class="refresh-row">
-      <span class="update-label" id="ticker-time">--:--</span>
-      <button class="btn-refresh" onclick="loadTicker()" title="Aktualisieren">🔄</button>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════ -->
+<section class="steps" id="how">
+  <div class="section-eyebrow" data-de="So funktioniert's" data-en="How it works">How it works</div>
+  <h2 style="margin-bottom:1.75rem" data-de="In 3 Schritten <em>drin.</em>" data-en="3 steps. <em>That's it.</em>">3 steps. <em>That's it.</em></h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-text">
+      <h3 data-de="Telegram öffnen" data-en="Open Telegram">Open Telegram</h3>
+      <p data-de="Du brauchst nur die Telegram-App — kostenlos für iOS und Android."
+         data-en="All you need is the Telegram app — free for iOS and Android.">
+        All you need is the Telegram app — free for iOS and Android.
+      </p>
     </div>
   </div>
-  <div id="ticker-grid" class="ticker-grid">
-    <div class="loading-state">
-      <span class="de-only">Preise werden geladen…</span>
-      <span class="en-only">Loading prices…</span>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-text">
+      <h3 data-de="@SpaidermanNewsBot starten" data-en="Start @SpaidermanNewsBot">Start @SpaidermanNewsBot</h3>
+      <p data-de="Suche nach dem Bot oder klick auf den Link. Drücke START — fertig."
+         data-en="Search for the bot or tap the link. Hit START — done.">
+        Search for the bot or tap the link. Hit START — done.
+      </p>
     </div>
   </div>
-  <p class="ticker-note de-only">Daten von CoinGecko · aktualisiert alle 60 Sekunden</p>
-  <p class="ticker-note en-only">Data from CoinGecko · updates every 60 seconds</p>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-text">
+      <h3 data-de="Täglich informiert" data-en="Stay informed daily">Stay informed daily</h3>
+      <p data-de="Jeden Morgen um 08:00 Uhr bekommst du dein Krypto & AI Briefing — direkt in deinen Chat."
+         data-en="Every morning at 8 AM you receive your Crypto & AI briefing — straight into your chat.">
+        Every morning at 8 AM you receive your Crypto &amp; AI briefing — straight into your chat.
+      </p>
+    </div>
+  </div>
 </section>
 
-<!-- ══ NEWS FEED ═════════════════════════════════════════════════════════ -->
-<section class="section-block" id="news-section">
-  <div class="section-header">
-    <h2 class="section-title">
-      <span class="de-only">📰 Crypto & KI News</span>
-      <span class="en-only">📰 Crypto & AI News</span>
-    </h2>
-    <div class="refresh-row">
-      <span class="countdown-label" id="news-countdown" title="Nächste Aktualisierung / Next refresh">5:00</span>
-      <button class="btn-refresh" onclick="loadNews()" title="Jetzt aktualisieren">🔄</button>
-    </div>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════
+     BLOG
+════════════════════════════════════════════════ -->
+<section class="blog" id="blog">
+  <div class="section-eyebrow" data-de="Updates & Gedanken" data-en="Updates & Thoughts">Updates &amp; Thoughts</div>
+  <h2 data-de="Direkt von <em>mir.</em>" data-en="Straight from <em>me.</em>">Straight from <em>me.</em></h2>
+  <p class="body-text" style="margin-bottom:1.75rem"
+     data-de="Ab und zu schreibe ich hier was ich gerade baue, teste oder über Krypto & AI denke. Kein Bullshit."
+     data-en="Every now and then I write about what I'm building, testing or thinking about crypto & AI. No BS.">
+    Every now and then I write about what I'm building, testing or thinking about crypto &amp; AI. No BS.
+  </p>
+
+  <!-- POST 1 -->
+  <div class="post">
+    <div class="post-date" data-de="02. März 2026 · Start" data-en="March 2, 2026 · Origin">March 2, 2026 · Origin</div>
+    <h3 data-de="Warum ich Spaiderman gebaut habe"
+        data-en="Why I built Spaiderman">Why I built Spaiderman</h3>
+    <p data-de="Ich wollte täglich wissen was in Krypto und AI passiert — ohne 20 Tabs offen zu haben. Also hab ich mir einen Bot gebaut. Jetzt läuft er für alle."
+       data-en="I wanted to know what's happening in crypto and AI every day — without 20 tabs open. So I built a bot. Now it runs for everyone.">
+      I wanted to know what's happening in crypto and AI every day — without 20 tabs open. So I built a bot. Now it runs for everyone.
+    </p>
+    <span class="post-tag" data-de="Story" data-en="Story">Story</span>
   </div>
-  <div id="news-grid" class="news-grid">
-    <div class="loading-state">
-      <span class="de-only">News werden geladen…</span>
-      <span class="en-only">Loading news…</span>
-    </div>
+
+  <!-- POST 2 -->
+  <div class="post">
+    <div class="post-date" data-de="02. März 2026 · KI" data-en="March 2, 2026 · AI">March 2, 2026 · AI</div>
+    <h3 data-de="KI frisst gerade alles — was du wissen musst"
+        data-en="AI is eating everything — what you need to know">AI is eating everything — what you need to know</h3>
+    <p data-de="GPT, Claude, Gemini — die Modelle werden wöchentlich besser. Spaiderman filtert für dich was davon wirklich relevant ist und was nur Hype."
+       data-en="GPT, Claude, Gemini — models improve weekly. Spaiderman filters what's actually relevant vs. what's just hype.">
+      GPT, Claude, Gemini — models improve weekly. Spaiderman filters what's actually relevant vs. what's just hype.
+    </p>
+    <span class="post-tag" data-de="KI & AI" data-en="AI">AI</span>
   </div>
-  <p class="ticker-note de-only">Quelle: CoinTelegraph · automatische Aktualisierung alle 5 Minuten</p>
-  <p class="ticker-note en-only">Source: CoinTelegraph · auto-refresh every 5 minutes</p>
+
+  <!-- POST 3 -->
+  <div class="post">
+    <div class="post-date" data-de="02. März 2026 · Krypto" data-en="March 2, 2026 · Crypto">March 2, 2026 · Crypto</div>
+    <h3 data-de="Bitcoin März 2026 — was der Chart sagt"
+        data-en="Bitcoin March 2026 — what the chart says">Bitcoin March 2026 — what the chart says</h3>
+    <p data-de="Nach dem historischen Februar-Minus: Kaufgelegenheit oder Falle? Meine ehrliche Einschätzung — ohne Finanzberatung, mit gesundem Menschenverstand."
+       data-en="After the historic February dip: buying opportunity or trap? My honest take — no financial advice, just common sense.">
+      After the historic February dip: buying opportunity or trap? My honest take — no financial advice, just common sense.
+    </p>
+    <span class="post-tag" data-de="Krypto" data-en="Crypto">Crypto</span>
+  </div>
+
+  <div class="more-hint" data-de="· mehr kommt · bleib dran ·" data-en="· more coming · stay tuned ·">· more coming · stay tuned ·</div>
 </section>
 
-<!-- ══ TELEGRAM CTA ═══════════════════════════════════════════════════════ -->
-<section class="cta-strip">
-  <div class="cta-inner">
-    <div class="cta-text">
-      <span class="cta-icon">📡</span>
-      <div>
-        <div class="cta-title de-only">7 Posts täglich — direkt auf Telegram</div>
-        <div class="cta-title en-only">7 posts daily — straight to Telegram</div>
-        <div class="cta-sub de-only">07:00 Wake · 09:00 Briefing · 11:00 KI-Spot · 13:00 Lunch · 16:00 Analyse · 19:00 Tech · 20:00 Abend</div>
-        <div class="cta-sub en-only">07:00 Wake · 09:00 Briefing · 11:00 AI Spot · 13:00 Lunch · 16:00 Analysis · 19:00 Tech · 20:00 Evening</div>
-      </div>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════
+     LANGUAGES
+════════════════════════════════════════════════ -->
+<section class="lang-section" id="languages">
+  <div class="section-eyebrow" data-de="Verfügbare Sprachen" data-en="Available languages">Available languages</div>
+  <h2 data-de="Aktuell in <em>2 Sprachen.</em><br>Mehr kommen." data-en="Currently in <em>2 languages.</em><br>More coming.">Currently in <em>2 languages.</em><br>More coming.</h2>
+
+  <p class="body-text"
+     data-de="Spaiderman ist aktuell auf Englisch und Deutsch verfügbar. Weitere Sprachen folgen — angetrieben von Community-Requests und Kaffee."
+     data-en="Spaiderman is currently available in English and German. More languages are on the way — powered by community requests and coffee.">
+    Spaiderman is currently available in English and German. More languages are on the way — powered by community requests and coffee.
+  </p>
+
+  <div class="lang-pills">
+    <div class="lang-pill live"><div class="dot"></div>🇬🇧 English</div>
+    <div class="lang-pill live"><div class="dot"></div>🇩🇪 Deutsch</div>
+    <div class="lang-pill soon"><div class="dot"></div>🇫🇷 Français</div>
+    <div class="lang-pill soon"><div class="dot"></div>🇪🇸 Español</div>
+    <div class="lang-pill soon"><div class="dot"></div>🇵🇹 Português</div>
+    <div class="lang-pill soon"><div class="dot"></div>🇹🇷 Türkçe</div>
+    <div class="lang-pill soon"><div class="dot"></div>🇯🇵 日本語</div>
+    <div class="lang-pill soon"><div class="dot"></div>
+      <span data-de="Deine Sprache?" data-en="Your language?">Your language?</span>
     </div>
-    <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="btn-telegram">
-      <span class="de-only">🕷️ Jetzt starten</span>
-      <span class="en-only">🕷️ Start Now</span>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════
+     ROADMAP
+════════════════════════════════════════════════ -->
+<section class="roadmap" id="roadmap">
+  <div class="section-eyebrow" data-de="Was kommt als nächstes" data-en="What's coming next">What's coming next</div>
+  <h2 data-de="Die <em>Spinne</em> spinnt weiter." data-en="The <em>spider</em> keeps spinning.">The <em>spider</em> keeps spinning.</h2>
+
+  <p class="body-text"
+     data-de="Spaiderman ist ein laufendes Projekt. Jeder Kaffee, jedes Feedback, jede Idee aus der Community bringt ihn einen Schritt weiter."
+     data-en="Spaiderman is a living project. Every coffee, every piece of feedback, every idea from the community moves it forward one step.">
+    Spaiderman is a living project. Every coffee, every piece of feedback, every idea from the community moves it forward one step.
+  </p>
+
+  <div class="idea-grid">
+
+    <div class="idea-card highlight">
+      <div class="idea-icon">🔔</div>
+      <h3 data-de="Custom Preis-Alerts" data-en="Custom Price Alerts">Custom Price Alerts</h3>
+      <p data-de="BTC unter 80k? Du kriegst Bescheid." data-en="BTC below 80k? You'll know.">BTC below 80k? You'll know.</p>
+    </div>
+
+    <div class="idea-card highlight">
+      <div class="idea-icon">🌍</div>
+      <h3 data-de="Mehr Sprachen" data-en="More Languages">More Languages</h3>
+      <p data-de="FR, ES, PT, TR — bald." data-en="FR, ES, PT, TR — soon.">FR, ES, PT, TR — soon.</p>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-icon">📊</div>
+      <h3 data-de="Portfolio-Tracker" data-en="Portfolio Tracker">Portfolio Tracker</h3>
+      <p data-de="Deine Coins, dein P&amp;L." data-en="Your coins, your P&amp;L.">Your coins, your P&amp;L.</p>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-icon">📋</div>
+      <h3 data-de="Wochen-Digest" data-en="Weekly Digest">Weekly Digest</h3>
+      <p data-de="Die Woche in 60 Sekunden." data-en="The week in 60 seconds.">The week in 60 seconds.</p>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-icon">🗳️</div>
+      <h3 data-de="Community-Voting" data-en="Community Voting">Community Voting</h3>
+      <p data-de="Ihr bestimmt was reinkommt." data-en="You decide what's in.">You decide what's in.</p>
+    </div>
+
+    <div class="idea-card">
+      <div class="idea-icon">🕷️</div>
+      <h3 data-de="Web-Version" data-en="Web Version">Web Version</h3>
+      <p data-de="Spaiderman.org — someday." data-en="Spaiderman.org — someday.">Spaiderman.org — someday.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════
+     COMMUNITY + COFFEE
+════════════════════════════════════════════════ -->
+<section class="community" id="community">
+  <div class="section-eyebrow" data-de="Community &amp; Kaffee" data-en="Community &amp; Coffee">Community &amp; Coffee</div>
+  <h2 data-de="Besser durch <em>euch.</em>" data-en="Better because of <em>you.</em>">Better because of <em>you.</em></h2>
+
+  <p class="body-text"
+     data-de="Spaiderman ist kein fertiges Produkt — er wächst mit der Community. Ein DM mit einer Idee, eine Sprachauswahl, ein Feedback. Jede Kleinigkeit zählt."
+     data-en="Spaiderman isn't a finished product — it grows with the community. A DM with an idea, a language request, a piece of feedback. Every little thing counts.">
+    Spaiderman isn't a finished product — it grows with the community. A DM with an idea, a language request, a piece of feedback. Every little thing counts.
+  </p>
+
+  <div class="coffee-banner">
+    <div class="big-icon">☕</div>
+    <h3 data-de="Mit jedem Kaffee wird Spaiderman besser." data-en="With every coffee, Spaiderman gets better.">With every coffee, Spaiderman gets better.</h3>
+    <p data-de="Kein Abo, kein Paywall — Spaiderman ist und bleibt kostenlos. Wer trotzdem unterstützen will: ein Kaffee reicht. Jeder Cent fließt direkt in Server, Tools und neue Features."
+       data-en="No subscription, no paywall — Spaiderman is and stays free. If you want to support anyway: one coffee is enough. Every cent goes straight into servers, tools and new features.">
+      No subscription, no paywall — Spaiderman is and stays free. If you want to support anyway: one coffee is enough. Every cent goes straight into servers, tools and new features.
+    </p>
+    <a href="https://ko-fi.com/spaiderman" class="btn btn-coffee" target="_blank" style="display:inline-flex; margin: 0 auto;">
+      <span data-de="☕ Kaffee spendieren" data-en="☕ Buy me a coffee">☕ Buy me a coffee</span>
     </a>
   </div>
+
+  <p class="body-text" style="margin-top:1.25rem; text-align:center; font-size:.82rem;"
+     data-de="💬 Ideen &amp; Feedback? Schreib mir auf Threads, Instagram oder X."
+     data-en="💬 Ideas &amp; feedback? Reach out on Threads, Instagram or X.">
+    💬 Ideas &amp; feedback? Reach out on Threads, Instagram or X.
+  </p>
 </section>
 
-<!-- ══ KO-FI ══════════════════════════════════════════════════════════════ -->
-<section class="section-block" id="kofi-section">
-  <div class="kofi-card">
-    <div class="kofi-left">
-      <div class="kofi-emoji">☕</div>
-      <div>
-        <h3 class="kofi-title de-only">Spaiderman einen Kaffee spendieren</h3>
-        <h3 class="kofi-title en-only">Buy Spaiderman a Coffee</h3>
-        <p class="kofi-text de-only">
-          Alle Analysen, alle Posts, alle 7 täglichen Broadcasts — 100% kostenlos.<br>
-          Wenn dir das hilft: ein Kaffee hält die Spinne am Netz. 🕸️
-        </p>
-        <p class="kofi-text en-only">
-          All analyses, all posts, all 7 daily broadcasts — 100% free.<br>
-          If this helps you: a coffee keeps the spider spinning. 🕸️
-        </p>
-        <div class="kofi-buttons">
-          <a href="https://ko-fi.com/spaiderman" target="_blank" rel="noopener" class="btn-kofi">
-            ☕ ko-fi.com/spaiderman
-          </a>
-          <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="btn-kofi-secondary">
-            <span class="de-only">📡 Gratis Newsletter</span>
-            <span class="en-only">📡 Free Newsletter</span>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="kofi-right">
-      <div class="kofi-stat">
-        <span class="kofi-stat-num">7×</span>
-        <span class="kofi-stat-label de-only">täglich</span>
-        <span class="kofi-stat-label en-only">daily</span>
-      </div>
-      <div class="kofi-stat">
-        <span class="kofi-stat-num">0€</span>
-        <span class="kofi-stat-label de-only">Paywall</span>
-        <span class="kofi-stat-label en-only">Paywall</span>
-      </div>
-      <div class="kofi-stat">
-        <span class="kofi-stat-num">∞</span>
-        <span class="kofi-stat-label de-only">Signal</span>
-        <span class="kofi-stat-label en-only">Signal</span>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="div"></div>
 
-<!-- ══ SOCIAL LINKS ═══════════════════════════════════════════════════════ -->
-<section class="section-block" id="social-section">
-  <h2 class="section-title" style="margin-bottom:20px;">
-    <span class="de-only">🌐 Folge Spaiderman</span>
-    <span class="en-only">🌐 Follow Spaiderman</span>
-  </h2>
-  <div class="social-grid">
+<!-- ════════════════════════════════════════════════
+     SOCIAL / LINKS
+════════════════════════════════════════════════ -->
+<section class="social" id="links">
+  <div class="section-eyebrow" data-de="Folg mir" data-en="Follow me">Follow me</div>
+  <h2 data-de="Bleib <em>connected.</em>" data-en="Stay <em>connected.</em>">Stay <em>connected.</em></h2>
 
-    <a href="https://x.com/24Spaiderman7" target="_blank" rel="noopener" class="social-card social-x">
-      <div class="social-icon">𝕏</div>
-      <div class="social-info">
-        <div class="social-name">X / Twitter</div>
-        <div class="social-handle">@24Spaiderman7</div>
-        <div class="social-desc de-only">Schnelle Updates &amp; Hot Takes</div>
-        <div class="social-desc en-only">Fast updates &amp; hot takes</div>
-      </div>
-      <div class="social-arrow">→</div>
+  <div class="link-list" style="margin-top:1.5rem">
+
+    <a href="https://t.me/SpaidermanNewsBot" class="soc-link" target="_blank">
+      <span class="icon">✈️</span>
+      <span class="label">
+        <span data-de="Spaiderman Bot" data-en="Spaiderman Bot">Spaiderman Bot</span><br>
+        <span class="handle">@SpaidermanNewsBot</span>
+      </span>
+      <span class="arr">→</span>
     </a>
 
-    <a href="https://www.threads.com/@24spaiderman7" target="_blank" rel="noopener" class="social-card social-threads">
-      <div class="social-icon">🧵</div>
-      <div class="social-info">
-        <div class="social-name">Threads</div>
-        <div class="social-handle">@24spaiderman7</div>
-        <div class="social-desc de-only">Deep Dives &amp; Meinungen</div>
-        <div class="social-desc en-only">Deep dives &amp; opinions</div>
-      </div>
-      <div class="social-arrow">→</div>
+    <a href="https://x.com/24Spaiderman7" class="soc-link" target="_blank">
+      <span class="icon">𝕏</span>
+      <span class="label">
+        <span data-de="X / Twitter" data-en="X / Twitter">X / Twitter</span><br>
+        <span class="handle">@24Spaiderman7</span>
+      </span>
+      <span class="arr">→</span>
     </a>
 
-    <a href="https://www.instagram.com/24spaiderman7" target="_blank" rel="noopener" class="social-card social-insta">
-      <div class="social-icon">📸</div>
-      <div class="social-info">
-        <div class="social-name">Instagram</div>
-        <div class="social-handle">@24spaiderman7</div>
-        <div class="social-desc de-only">Visuals, Charts &amp; Stories</div>
-        <div class="social-desc en-only">Visuals, charts &amp; stories</div>
-      </div>
-      <div class="social-arrow">→</div>
+    <a href="https://www.instagram.com/24spaiderman7" class="soc-link" target="_blank">
+      <span class="icon">📸</span>
+      <span class="label">
+        <span data-de="Instagram" data-en="Instagram">Instagram</span><br>
+        <span class="handle">@24spaiderman7</span>
+      </span>
+      <span class="arr">→</span>
     </a>
 
-    <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="social-card social-tg">
-      <div class="social-icon">📡</div>
-      <div class="social-info">
-        <div class="social-name">Telegram</div>
-        <div class="social-handle">SpaidermanNewsBot</div>
-        <div class="social-desc de-only">7× täglich · kostenlos</div>
-        <div class="social-desc en-only">7× daily · free newsletter</div>
-      </div>
-      <div class="social-arrow">→</div>
+    <a href="https://threads.com/24spaiderman7" class="soc-link" target="_blank">
+      <span class="icon">🧵</span>
+      <span class="label">
+        <span data-de="Threads" data-en="Threads">Threads</span><br>
+        <span class="handle">@24spaiderman7</span>
+      </span>
+      <span class="arr">→</span>
+    </a>
+
+    <a href="https://ko-fi.com/spaiderman" class="soc-link coffee" target="_blank">
+      <span class="icon">☕</span>
+      <span class="label">
+        <span data-de="Kaffee spendieren" data-en="Buy me a coffee">Kaffee spendieren</span><br>
+        <span class="handle" style="color:var(--muted)">ko-fi.com/spaiderman</span>
+      </span>
+      <span class="arr" style="color:var(--gold)">→</span>
     </a>
 
   </div>
 </section>
 
-<!-- ══ BLOG POSTS ═════════════════════════════════════════════════════════ -->
-<section class="section-block" id="artikel">
-  <div class="section-header" style="margin-bottom:20px;">
-    <h2 class="section-title">
-      <span class="de-only">📝 Neueste Artikel</span>
-      <span class="en-only">📝 Latest Articles</span>
-    </h2>
-    <span style="font-size:12px;color:var(--text3);">{{ site.posts.size }}
-      <span class="de-only">Artikel</span><span class="en-only">articles</span>
-    </span>
+<!-- ════════════════════════════════════════════════
+     IMPRESSUM
+════════════════════════════════════════════════ -->
+<div class="div"></div>
+
+<section class="impressum" id="impressum">
+  <div class="section-eyebrow" data-de="Rechtliches" data-en="Legal Notice">Legal Notice</div>
+  <h2 data-de="<em>Impressum</em>" data-en="<em>Impressum</em>"><em>Impressum</em></h2>
+
+  <div class="imp-block">
+    <h3 data-de="Betreiber" data-en="Operator">Operator</h3>
+    <p>
+      Butterbread<br>
+      <a href="https://butterbread.org" target="_blank">butterbread.org</a>
+    </p>
   </div>
 
-  {% if site.posts.size > 0 %}
-  <div class="main-grid">
-    <div>
-      {% for post in site.posts %}
-      <article class="article-card">
-        <div class="article-card-inner">
-          <div class="article-meta">
-            {% for tag in post.tags limit:2 %}
-              <span class="tag tag-{{ tag }}">{{ tag | upcase }}</span>
-            {% endfor %}
-            <span class="article-date">{{ post.date | date: "%d.%m.%Y" }}</span>
-            {% if post.read_time %}<span class="article-read-time">⏱ {{ post.read_time }} Min</span>{% endif %}
-          </div>
-          <h2 class="article-title">
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          </h2>
-          <p class="article-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
-          <a href="{{ post.url | relative_url }}" class="read-more">
-            <span class="de-only">Weiterlesen →</span>
-            <span class="en-only">Read more →</span>
-          </a>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-
-    <!-- SIDEBAR -->
-    <aside>
-      <div class="sidebar-widget telegram-cta">
-        <div class="widget-title de-only">📡 7× täglich kostenlos</div>
-        <div class="widget-title en-only">📡 7× daily for free</div>
-        <p class="de-only">Crypto &amp; KI Briefings direkt in deinen Telegram. 7× täglich. Gratis.</p>
-        <p class="en-only">Crypto &amp; AI briefings straight to your Telegram. 7× daily. Free.</p>
-        <a href="https://t.me/SpaidermanNewsBot" target="_blank" rel="noopener" class="btn-affiliate" style="display:block;text-align:center;margin-bottom:8px;">
-          <span class="de-only">Jetzt abonnieren</span>
-          <span class="en-only">Subscribe now</span>
-        </a>
-        <p style="font-size:11px;color:var(--text3);text-align:center;margin:0;">
-          <span class="de-only">Kein Spam · Jederzeit abmelbar</span>
-          <span class="en-only">No spam · Unsubscribe anytime</span>
-        </p>
-      </div>
-
-      <div class="sidebar-widget">
-        <div class="widget-title">🛡️ <span class="de-only">Spaiderman-Empfehlungen</span><span class="en-only">Spaiderman Picks</span></div>
-        <ul class="affiliate-list">
-          <li><a href="{{ site.affiliate.ledger }}" target="_blank" rel="noopener">🔒 Ledger Nano X <span class="aff-commission">Best Pick</span></a></li>
-          <li><a href="{{ site.affiliate.trezor }}" target="_blank" rel="noopener">🔒 Trezor Model T</a></li>
-          <li><a href="{{ site.affiliate.koinly }}" target="_blank" rel="noopener">📊 Koinly (<span class="de-only">Steuern</span><span class="en-only">Tax</span>)</a></li>
-          <li><a href="{{ site.affiliate.tradingview }}" target="_blank" rel="noopener">📈 TradingView Pro</a></li>
-          <li><a href="{{ site.affiliate.nordvpn }}" target="_blank" rel="noopener">🔐 NordVPN</a></li>
-        </ul>
-        <p style="font-size:10px;color:var(--text3);margin-top:10px;font-style:italic;">
-          <span class="de-only">*Affiliate-Links · Für dich ohne Mehrkosten</span>
-          <span class="en-only">*Affiliate links · No extra cost for you</span>
-        </p>
-      </div>
-
-      <div class="sidebar-widget">
-        <div class="widget-title">🌐 <span class="de-only">Folge Spaiderman</span><span class="en-only">Follow Spaiderman</span></div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="https://x.com/24Spaiderman7" target="_blank" rel="noopener" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">𝕏 @24Spaiderman7</a>
-          <a href="https://www.threads.com/@24spaiderman7" target="_blank" rel="noopener" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">🧵 Threads</a>
-          <a href="https://www.instagram.com/24spaiderman7" target="_blank" rel="noopener" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">📸 Instagram</a>
-          <a href="{{ site.author.kofi }}" target="_blank" rel="noopener" class="btn-secondary" style="display:block;text-align:center;font-size:13px;padding:9px;">☕ Ko-fi</a>
-        </div>
-      </div>
-    </aside>
+  <div class="imp-block">
+    <h3 data-de="Verantwortlich für den Inhalt" data-en="Responsible for content">Responsible for content</h3>
+    <p>
+      Butterbread Technologies<br>
+      <span data-de="Kontakt ausschließlich via:" data-en="Contact exclusively via:">Contact exclusively via:</span><br>
+      <a href="https://threads.com/24spaiderman7" target="_blank">Threads @24spaiderman7</a>
+      <span> · </span>
+      <a href="https://www.instagram.com/24spaiderman7" target="_blank">Instagram @24spaiderman7</a>
+      <span> · </span>
+      <a href="https://x.com/24Spaiderman7" target="_blank">X @24Spaiderman7</a>
+    </p>
   </div>
 
-  {% else %}
-  <div style="text-align:center;padding:60px 20px;color:var(--text3);">
-    <div style="font-size:48px;margin-bottom:16px;">🕷️</div>
-    <div class="de-only">Erste Artikel werden bald veröffentlicht.</div>
-    <div class="en-only">First articles coming soon.</div>
+  <div class="imp-block">
+    <h3 data-de="Haftungsausschluss" data-en="Disclaimer">Disclaimer</h3>
+    <p data-de="Die Inhalte dieses Angebots dienen ausschließlich der allgemeinen Information und stellen keine Anlage-, Rechts- oder Steuerberatung dar. Für die Richtigkeit, Vollständigkeit und Aktualität der bereitgestellten Informationen wird keine Gewähr übernommen. Investitionen in Kryptowährungen sind mit erheblichen Risiken verbunden. DYOR."
+       data-en="The content of this service is for general information purposes only and does not constitute investment, legal or tax advice. No guarantee is given for the accuracy, completeness or timeliness of the information provided. Investments in cryptocurrencies involve substantial risks. DYOR.">
+      The content of this service is for general information purposes only and does not constitute investment, legal or tax advice. No guarantee is given for the accuracy, completeness or timeliness of the information provided. Investments in cryptocurrencies involve substantial risks. DYOR.
+    </p>
   </div>
-  {% endif %}
+
+  <div class="imp-block">
+    <h3 data-de="Externe Links" data-en="External Links">External Links</h3>
+    <p data-de="Diese Seite enthält Links zu externen Webseiten Dritter. Auf die Inhalte dieser Seiten haben wir keinen Einfluss. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter verantwortlich."
+       data-en="This page contains links to external third-party websites. We have no influence over the content of those sites. The respective provider is always responsible for the content of linked pages.">
+      This page contains links to external third-party websites. We have no influence over the content of those sites. The respective provider is always responsible for the content of linked pages.
+    </p>
+  </div>
+
+  <div class="imp-block">
+    <h3 data-de="Urheberrecht" data-en="Copyright">Copyright</h3>
+    <p data-de="Die auf dieser Seite erstellten Inhalte und Werke unterliegen dem deutschen Urheberrecht. © 2026 Butterbread / Spaiderman. Alle Rechte vorbehalten."
+       data-en="The content and works created on this page are subject to copyright law. © 2026 Butterbread / Spaiderman. All rights reserved.">
+      The content and works created on this page are subject to copyright law. © 2026 Butterbread / Spaiderman. All rights reserved.
+    </p>
+  </div>
+
+  <div class="imp-block">
+    <h3 data-de="Parodie-Hinweis" data-en="Parody Notice">Parody Notice</h3>
+    <p data-de="&quot;Spaiderman&quot; ist ein unabhängiges parodistisches Kreativprojekt und steht in keiner Verbindung zu Marvel Entertainment LLC, The Walt Disney Company oder dem Spider-Man-Franchise. Die Anspielungen auf populäre Superhelden-Klischees dienen ausschließlich humoristischen Zwecken (Parodie gem. § 24 UrhG). Alle Marken und Charaktere gehören ihren jeweiligen Eigentümern."
+       data-en="&quot;Spaiderman&quot; is an independent parody creative project and is not affiliated with, endorsed by, or connected to Marvel Entertainment LLC, The Walt Disney Company, or the Spider-Man franchise in any way. All superhero references are used purely for comedic parody purposes (fair use / parody). All trademarks and characters belong to their respective owners.">
+      &quot;Spaiderman&quot; is an independent parody creative project and is not affiliated with, endorsed by, or connected to Marvel Entertainment LLC, The Walt Disney Company, or the Spider-Man franchise in any way. All superhero references are used purely for comedic parody purposes (fair use / parody). All trademarks and characters belong to their respective owners.
+    </p>
+  </div>
+
+  <div class="imp-block">
+    <h3 data-de="Kein Finanzrat — wichtiger Hinweis" data-en="No Financial Advice — Important Notice">No Financial Advice — Important Notice</h3>
+    <p data-de="Sämtliche auf dieser Seite und über den Spaiderman-Bot bereitgestellten Inhalte dienen ausschließlich der allgemeinen Information und Unterhaltung. Sie stellen keine Anlageberatung, keine Finanzberatung, keine Handelsempfehlung und keinen Aufruf zum Kauf oder Verkauf von Kryptowährungen oder anderen Finanzinstrumenten dar. Kryptowährungen sind hochspekulative Anlagen mit erheblichem Verlustrisiko. Investieren Sie nur Geld, dessen Verlust Sie sich leisten können. DYOR — Do Your Own Research."
+       data-en="All content provided on this page and through the Spaiderman bot is for general information and entertainment purposes only. It does not constitute investment advice, financial advice, trading recommendations, or any solicitation to buy or sell cryptocurrencies or other financial instruments. Cryptocurrencies are highly speculative assets with significant risk of loss. Only invest money you can afford to lose. DYOR — Do Your Own Research.">
+      All content provided on this page and through the Spaiderman bot is for general information and entertainment purposes only. It does not constitute investment advice, financial advice, trading recommendations, or any solicitation to buy or sell cryptocurrencies or other financial instruments. Cryptocurrencies are highly speculative assets with significant risk of loss. Only invest money you can afford to lose. DYOR — Do Your Own Research.
+    </p>
+  </div>
 </section>
 
-<!-- ══ JAVASCRIPT ═════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer>
+  <span class="foot-icon">🕷️</span>
+  <strong>Spaiderman</strong><br>
+  <span data-de="Krypto &amp; AI — täglich auf EN &amp; DE" data-en="Crypto &amp; AI — daily in EN &amp; DE">Crypto &amp; AI — daily in EN &amp; DE</span>
+  <br><br>
+  <span data-de="Gemacht mit " data-en="Made with ">Made with </span><span class="red">❤️</span>
+  <span data-de=" von Jan · Betrieben von " data-en=" by Jan · Operated by "> by Jan · Operated by </span>
+  <a href="https://butterbread.org" target="_blank" style="color:var(--red);text-decoration:none;">Butterbread</a>
+  <br>
+  <span data-de="Kein Spam · Kein Bullshit" data-en="No spam · No BS">No spam · No BS</span>
+  <div class="foot-legal">
+    <a href="#impressum" style="color:var(--muted);text-decoration:none;"
+       data-de="Impressum &amp; Haftungsausschluss" data-en="Legal Notice &amp; Disclaimer">Legal Notice &amp; Disclaimer</a>
+    &nbsp;·&nbsp;
+    <span data-de="Keine Finanzberatung. DYOR." data-en="No financial advice. DYOR.">No financial advice. DYOR.</span>
+  </div>
+</footer>
+
+<div class="spacer"></div>
+
+<!-- ════════════════════════════════════════════════
+     BILINGUAL JS
+════════════════════════════════════════════════ -->
 <script>
-/* ── CONFIG ──────────────────────────────────────────────────────────────── */
-const COINS = ['bitcoin','ethereum','solana','binancecoin','cardano','avalanche-2','chainlink'];
-const COIN_META = {
-  'bitcoin':     {sym:'BTC', emoji:'₿'},
-  'ethereum':    {sym:'ETH', emoji:'Ξ'},
-  'solana':      {sym:'SOL', emoji:'◎'},
-  'binancecoin': {sym:'BNB', emoji:'🔶'},
-  'cardano':     {sym:'ADA', emoji:'🔵'},
-  'avalanche-2': {sym:'AVAX',emoji:'🔺'},
-  'chainlink':   {sym:'LINK',emoji:'🔗'},
-};
-const NEWS_RSS = 'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fcointelegraph.com%2Frss&count=9';
-const REFRESH_SECS = 300; // 5 minutes for news
+  let currentLang = 'en';
 
-let newsCountdownSecs = REFRESH_SECS;
-let countdownInterval;
+  function setLang(lang) {
+    currentLang = lang;
 
-/* ── HELPERS ─────────────────────────────────────────────────────────────── */
-function getLang() { return document.body.classList.contains('lang-en') ? 'en' : 'de'; }
+    // toggle button styles
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-function fmtPrice(price) {
-  if (price >= 100) return '$' + price.toLocaleString('en-US', {maximumFractionDigits:0});
-  if (price >= 1)   return '$' + price.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-  return '$' + price.toLocaleString('en-US', {minimumFractionDigits:4, maximumFractionDigits:6});
-}
+    // update all data-de / data-en elements
+    document.querySelectorAll('[data-de]').forEach(el => {
+      const txt = el.getAttribute('data-' + lang);
+      if (txt) el.innerHTML = txt;
+    });
 
-function timeAgo(date) {
-  const secs = Math.floor((Date.now() - date.getTime()) / 1000);
-  const lang = getLang();
-  if (secs < 60)    return lang==='de' ? 'gerade eben' : 'just now';
-  if (secs < 3600)  return lang==='de' ? `vor ${Math.floor(secs/60)} Min.` : `${Math.floor(secs/60)}m ago`;
-  if (secs < 86400) return lang==='de' ? `vor ${Math.floor(secs/3600)} Std.` : `${Math.floor(secs/3600)}h ago`;
-  return lang==='de' ? `vor ${Math.floor(secs/86400)} Tagen` : `${Math.floor(secs/86400)}d ago`;
-}
-
-/* ── LIVE TICKER ─────────────────────────────────────────────────────────── */
-async function loadTicker() {
-  const grid = document.getElementById('ticker-grid');
-  const ids = COINS.join(',');
-  try {
-    const res = await fetch(
-      `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`
-    );
-    if (!res.ok) throw new Error('API ' + res.status);
-    const data = await res.json();
-
-    const now = new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
-    document.getElementById('ticker-time').textContent = now;
-
-    grid.innerHTML = COINS.map(id => {
-      const d = data[id]; if (!d) return '';
-      const meta = COIN_META[id] || {sym: id.toUpperCase(), emoji:''};
-      const chg = d.usd_24h_change || 0;
-      const up = chg >= 0;
-      return `<div class="ticker-card ${up?'ticker-up':'ticker-down'}">
-        <div class="ticker-symbol">${meta.sym}</div>
-        <div class="ticker-price">${fmtPrice(d.usd)}</div>
-        <div class="ticker-change ${up?'positive':'negative'}">${up?'▲':'▼'} ${Math.abs(chg).toFixed(2)}%</div>
-      </div>`;
-    }).join('');
-  } catch(e) {
-    const lang = getLang();
-    grid.innerHTML = `<div class="load-error">
-      ${lang==='de'
-        ? 'Preise konnten nicht geladen werden — <button class="link-btn" onclick="loadTicker()">Erneut versuchen</button>'
-        : 'Could not load prices — <button class="link-btn" onclick="loadTicker()">Try again</button>'}
-    </div>`;
+    // update html lang attr
+    document.documentElement.lang = lang;
   }
-}
 
-/* ── NEWS FEED ───────────────────────────────────────────────────────────── */
-async function loadNews() {
-  const grid = document.getElementById('news-grid');
-  newsCountdownSecs = REFRESH_SECS;
-  grid.classList.add('news-refreshing');
-  try {
-    const res = await fetch(NEWS_RSS);
-    if (!res.ok) throw new Error('RSS ' + res.status);
-    const data = await res.json();
-    const items = (data.items || []).slice(0, 9);
-    if (!items.length) throw new Error('empty');
-
-    grid.innerHTML = items.map(item => {
-      const date = new Date(item.pubDate);
-      const ago = timeAgo(date);
-      const img = item.thumbnail || (item.enclosure && item.enclosure.link) || '';
-      const clean = (item.description || '').replace(/<[^>]+>/g,'').substring(0,120);
-      return `<a class="news-card" href="${item.link}" target="_blank" rel="noopener noreferrer">
-        <div class="news-thumb" style="${img ? `background-image:url('${img}')` : 'background:var(--surface3)'}">
-          ${!img ? '<span style="font-size:28px;line-height:1">📰</span>' : ''}
-        </div>
-        <div class="news-body">
-          <div class="news-title">${item.title}</div>
-          ${clean ? `<div class="news-excerpt">${clean}…</div>` : ''}
-          <div class="news-meta">${ago} · CoinTelegraph</div>
-        </div>
-      </a>`;
-    }).join('');
-  } catch(e) {
-    const lang = getLang();
-    grid.innerHTML = `<div class="load-error">
-      ${lang==='de'
-        ? `News konnten nicht geladen werden — <a href="https://cointelegraph.com" target="_blank" rel="noopener">CoinTelegraph direkt öffnen →</a>`
-        : `Could not load news — <a href="https://cointelegraph.com" target="_blank" rel="noopener">Open CoinTelegraph directly →</a>`}
-    </div>`;
-  }
-  grid.classList.remove('news-refreshing');
-}
-
-function startCountdown() {
-  clearInterval(countdownInterval);
-  countdownInterval = setInterval(() => {
-    newsCountdownSecs = Math.max(0, newsCountdownSecs - 1);
-    if (newsCountdownSecs === 0) { loadNews(); newsCountdownSecs = REFRESH_SECS; }
-    const m = Math.floor(newsCountdownSecs / 60);
-    const s = newsCountdownSecs % 60;
-    const el = document.getElementById('news-countdown');
-    if (el) el.textContent = `${m}:${s.toString().padStart(2,'0')}`;
-  }, 1000);
-}
-
-/* ── INIT ────────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  loadTicker();
-  loadNews();
-  startCountdown();
-  setInterval(loadTicker, 60000); // Ticker every 60s
-});
+  // init on load — English first
+  document.addEventListener('DOMContentLoaded', () => setLang('en'));
 </script>
+
+</body>
+</html>
