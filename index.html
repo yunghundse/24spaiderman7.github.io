@@ -525,6 +525,74 @@
   /* spacer */
   .spacer { height: 5rem; }
 
+  /* ── PARTNER SECTION ── */
+  .partner-section {
+    padding: 3rem 1.25rem;
+    text-align: center;
+  }
+
+  .partner-card {
+    background: linear-gradient(135deg, #0f0f18 0%, #14141f 60%, rgba(230,57,70,.06) 100%);
+    border: 1px solid rgba(230,57,70,.25);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .partner-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+  }
+
+  .partner-perks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .65rem;
+    margin: 1.4rem 0 1.75rem;
+    text-align: left;
+  }
+
+  .partner-perk {
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: .6rem .75rem;
+    font-size: .78rem;
+    color: var(--sub);
+    line-height: 1.4;
+  }
+
+  .partner-perk strong { color: var(--text); display: block; font-size: .8rem; margin-bottom: .15rem; }
+
+  .partner-mailto {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 100px;
+    padding: .75rem 1.75rem;
+    font-size: .85rem;
+    font-weight: 600;
+    transition: opacity .2s, transform .15s;
+    box-shadow: 0 6px 20px rgba(230,57,70,.35);
+  }
+
+  .partner-mailto:hover { opacity: .88; transform: translateY(-1px); }
+
+  .partner-note {
+    font-size: .7rem;
+    color: var(--muted);
+    margin-top: .85rem;
+  }
+
   /* ─── LANGUAGES ─────────────────────────────── */
   .lang-section { padding: 3rem 1.5rem; max-width: 580px; margin: 0 auto; }
 
@@ -1463,6 +1531,52 @@ Tap a button to see what I can do.</span>
     </p>
   </div>
 </section>
+
+<!-- ════════════════════════════════════════════════
+     PARTNER
+════════════════════════════════════════════════ -->
+<section class="partner-section" id="partner">
+  <div class="section-eyebrow" data-de="Zusammenarbeit" data-en="Collaboration">Collaboration</div>
+  <h2 style="margin-bottom:.5rem" data-de="Partner <em>werden.</em>" data-en="Become a <em>partner.</em>">Become a <em>partner.</em></h2>
+  <p class="body-text" style="margin-bottom:1.5rem;max-width:440px;margin-left:auto;margin-right:auto"
+     data-de="Projekt, Tool oder Service der zur Crypto &amp; AI Community passt? Lass uns reden."
+     data-en="Got a project, tool or service that fits the crypto &amp; AI community? Let's talk.">
+    Got a project, tool or service that fits the crypto &amp; AI community? Let's talk.
+  </p>
+
+  <div class="partner-card">
+    <div class="partner-perks">
+      <div class="partner-perk">
+        <strong data-de="📣 Reichweite" data-en="📣 Reach">📣 Reach</strong>
+        <span data-de="Tägliche Briefings an aktive Krypto &amp; AI Nutzer" data-en="Daily briefings to active crypto &amp; AI subscribers">Daily briefings to active crypto &amp; AI subscribers</span>
+      </div>
+      <div class="partner-perk">
+        <strong data-de="🌍 Bilingual" data-en="🌍 Bilingual">🌍 Bilingual</strong>
+        <span data-de="Deutsch &amp; Englisch — zwei Märkte, ein Bot" data-en="German &amp; English — two markets, one bot">German &amp; English — two markets, one bot</span>
+      </div>
+      <div class="partner-perk">
+        <strong data-de="🎯 Zielgruppe" data-en="🎯 Audience">🎯 Audience</strong>
+        <span data-de="Crypto-affine, tech-savvy Community" data-en="Crypto-native, tech-savvy community">Crypto-native, tech-savvy community</span>
+      </div>
+      <div class="partner-perk">
+        <strong data-de="☕ Fair &amp; direkt" data-en="☕ Fair &amp; direct">☕ Fair &amp; direct</strong>
+        <span data-de="Kein Mittelsmann, keine Agentur" data-en="No middleman, no agency">No middleman, no agency</span>
+      </div>
+    </div>
+
+    <a class="partner-mailto" href="mailto:yunghundse@gmail.com?subject=Partner%20Spaiderman&body=Hey%20Jan%2C%0A%0AIch%20w%C3%BCrde%20gerne%20mit%20Spaiderman%20zusammenarbeiten.%0A%0AProjekt%2FIdee%3A%0A">
+      ✉️ <span data-de="Jetzt Kontakt aufnehmen" data-en="Get in touch now">Get in touch now</span>
+    </a>
+
+    <p class="partner-note"
+       data-de="Direkte E-Mail an Jan · Antwort innerhalb 24h · Keine Verpflichtung"
+       data-en="Direct email to Jan · Reply within 24h · No commitment">
+      Direct email to Jan · Reply within 24h · No commitment
+    </p>
+  </div>
+</section>
+
+<div class="div"></div>
 
 <!-- ════════════════════════════════════════════════
      FOOTER
