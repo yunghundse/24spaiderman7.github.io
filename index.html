@@ -526,6 +526,54 @@
   .spacer { height: 5rem; }
 
   /* ── PARTNER SECTION ── */
+  /* ── Placement tiers ── */
+  .placement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1rem;
+    margin: 1.6rem 0 2rem;
+    text-align: left;
+  }
+  .placement-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px;
+    padding: 1.2rem 1.1rem 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+  }
+  .placement-card:hover { border-color: rgba(255,80,80,.35); transform: translateY(-2px); }
+  .placement-card.featured { border-color: rgba(255,80,80,.45); }
+  .placement-card.featured::after {
+    content: "⭐ Featured";
+    position: absolute; top: .6rem; right: .6rem;
+    background: var(--red); color: #fff;
+    font-size: .6rem; font-weight: 700;
+    padding: .15rem .45rem; border-radius: 99px;
+    letter-spacing: .04em;
+  }
+  .placement-icon { font-size: 1.6rem; margin-bottom: .5rem; display: block; }
+  .placement-title { font-size: .85rem; font-weight: 700; color: var(--text); margin-bottom: .3rem; }
+  .placement-desc { font-size: .75rem; color: var(--muted); line-height: 1.5; }
+  .placement-tag {
+    display: inline-block; margin-top: .6rem;
+    background: rgba(255,80,80,.13); color: var(--red);
+    font-size: .65rem; font-weight: 600; padding: .1rem .4rem;
+    border-radius: 99px; letter-spacing: .03em;
+  }
+  .partner-form-row {
+    display: flex; gap: .6rem; flex-wrap: wrap;
+    justify-content: center; margin-top: .5rem;
+  }
+  .partner-mailto-alt {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .6rem 1.1rem; border-radius: 99px; font-size: .78rem; font-weight: 600;
+    text-decoration: none; transition: opacity .2s, transform .2s;
+    border: 1.5px solid rgba(255,80,80,.5); color: var(--text);
+    background: transparent;
+  }
+  .partner-mailto-alt:hover { opacity: .85; transform: translateY(-1px); background: rgba(255,80,80,.08); }
   .partner-section {
     padding: 3rem 1.25rem;
     text-align: center;
@@ -1546,40 +1594,87 @@ Tap a button to see what I can do.</span>
 <section class="partner-section" id="partner">
   <div class="section-eyebrow" data-de="Zusammenarbeit" data-en="Collaboration">Collaboration</div>
   <h2 style="margin-bottom:.5rem" data-de="Partner <em>werden.</em>" data-en="Become a <em>partner.</em>">Become a <em>partner.</em></h2>
-  <p class="body-text" style="margin-bottom:1.5rem;max-width:440px;margin-left:auto;margin-right:auto"
-     data-de="Projekt, Tool oder Service der zur Crypto &amp; AI Community passt? Lass uns reden."
-     data-en="Got a project, tool or service that fits the crypto &amp; AI community? Let's talk.">
-    Got a project, tool or service that fits the crypto &amp; AI community? Let's talk.
+  <p class="body-text" style="margin-bottom:.5rem;max-width:480px;margin-left:auto;margin-right:auto"
+     data-de="Dein Projekt, dein Tool oder dein Unternehmen direkt in der Spaiderman Community — täglich, bilingual, crypto-nativ."
+     data-en="Your project, tool or company placed directly inside the Spaiderman community — daily, bilingual, crypto-native.">
+    Your project, tool or company placed directly inside the Spaiderman community — daily, bilingual, crypto-native.
   </p>
 
-  <div class="partner-card">
-    <div class="partner-perks">
-      <div class="partner-perk">
-        <strong data-de="📣 Reichweite" data-en="📣 Reach">📣 Reach</strong>
-        <span data-de="Tägliche Briefings an aktive Krypto &amp; AI Nutzer" data-en="Daily briefings to active crypto &amp; AI subscribers">Daily briefings to active crypto &amp; AI subscribers</span>
+  <!-- Placement tiers -->
+  <div class="placement-grid">
+
+    <div class="placement-card">
+      <span class="placement-icon">🔗</span>
+      <div class="placement-title" data-de="Partner-Link" data-en="Partner Link">Partner Link</div>
+      <div class="placement-desc"
+           data-de="Dein Affiliate- oder Referral-Link wird in passenden Bot-Nachrichten und im täglichen Briefing eingebettet. Nutzer klicken direkt aus dem Chat."
+           data-en="Your affiliate or referral link embedded in relevant bot messages and daily briefings. Users click directly from within the chat.">
+        Your affiliate or referral link embedded in relevant bot messages and daily briefings. Users click directly from within the chat.
       </div>
-      <div class="partner-perk">
-        <strong data-de="🌍 Bilingual" data-en="🌍 Bilingual">🌍 Bilingual</strong>
-        <span data-de="Deutsch &amp; Englisch — zwei Märkte, ein Bot" data-en="German &amp; English — two markets, one bot">German &amp; English — two markets, one bot</span>
-      </div>
-      <div class="partner-perk">
-        <strong data-de="🎯 Zielgruppe" data-en="🎯 Audience">🎯 Audience</strong>
-        <span data-de="Crypto-affine, tech-savvy Community" data-en="Crypto-native, tech-savvy community">Crypto-native, tech-savvy community</span>
-      </div>
-      <div class="partner-perk">
-        <strong data-de="☕ Fair &amp; direkt" data-en="☕ Fair &amp; direct">☕ Fair &amp; direct</strong>
-        <span data-de="Kein Mittelsmann, keine Agentur" data-en="No middleman, no agency">No middleman, no agency</span>
-      </div>
+      <span class="placement-tag">Affiliate / Referral</span>
     </div>
 
-    <a class="partner-mailto" href="mailto:tech.butterbread@gmx.de?subject=Partner%20anfrage%20%E2%80%94%20Spaiderman&body=Hey%2C%0A%0Aich%20m%C3%B6chte%20Partner%20bei%20Spaiderman%20werden.%0A%0AMein%20Projekt%20%2F%20meine%20Idee%3A%0A%0AWebsite%3A%0AKontakt%3A%0A">
-      ✉️ <span data-de="Jetzt anmelden" data-en="Apply now">Apply now</span>
-    </a>
+    <div class="placement-card featured">
+      <span class="placement-icon">📣</span>
+      <div class="placement-title" data-de="Bot-Erwähnung" data-en="Bot Mention">Bot Mention</div>
+      <div class="placement-desc"
+           data-de="Dein Unternehmen oder Produkt wird im täglichen Crypto &amp; AI Briefing namentlich erwähnt — als Sponsor-Hinweis oder redaktioneller Block."
+           data-en="Your company or product gets a named mention in the daily crypto &amp; AI briefing — as a sponsor note or editorial block.">
+        Your company or product gets a named mention in the daily crypto &amp; AI briefing — as a sponsor note or editorial block.
+      </div>
+      <span class="placement-tag">Daily Briefing</span>
+    </div>
+
+    <div class="placement-card">
+      <span class="placement-icon">🏢</span>
+      <div class="placement-title" data-de="Company Placement" data-en="Company Placement">Company Placement</div>
+      <div class="placement-desc"
+           data-de="Dein Unternehmen bekommt einen festen Platz im Bot — eigener Menüpunkt, regelmäßige Erwähnung oder ein dedizierter Bereich in der Community."
+           data-en="Your company gets a permanent spot in the bot — dedicated menu entry, recurring feature or a branded section within the community.">
+        Your company gets a permanent spot in the bot — dedicated menu entry, recurring feature or a branded section within the community.
+      </div>
+      <span class="placement-tag">Custom</span>
+    </div>
+
+    <div class="placement-card">
+      <span class="placement-icon">🤝</span>
+      <div class="placement-title" data-de="Custom Deal" data-en="Custom Deal">Custom Deal</div>
+      <div class="placement-desc"
+           data-de="Eigene Idee? Newsletter-Sponsoring, Co-Branding, White-Label-Inhalte — alles besprechen wir direkt und finden gemeinsam das beste Format."
+           data-en="Own idea? Newsletter sponsoring, co-branding, white-label content — we discuss everything directly and find the best format together.">
+        Own idea? Newsletter sponsoring, co-branding, white-label content — we discuss everything directly and find the best format together.
+      </div>
+      <span class="placement-tag">Flexible</span>
+    </div>
+
+  </div>
+
+  <div class="partner-card" style="max-width:520px">
+    <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem"
+       data-de="Schreib uns einfach welche Platzierung dich interessiert — wir melden uns innerhalb 24h."
+       data-en="Just tell us which placement interests you — we'll get back to you within 24h.">
+      Just tell us which placement interests you — we'll get back to you within 24h.
+    </p>
+
+    <div class="partner-form-row">
+      <a class="partner-mailto"
+         href="mailto:tech.butterbread@gmx.de?subject=Partner%20Link%20%E2%80%94%20Spaiderman&body=Hey%20Spaiderman%2C%0A%0AIch%20m%C3%B6chte%20einen%20Partner-Link%20%2F%20Affiliate-Link%20platzieren.%0A%0AMein%20Projekt%20%2F%20Produkt%3A%0AWebsite%20%2F%20Link%3A%0AZielgruppe%3A%0AKontakt%3A%0A">
+        🔗 <span data-de="Partner-Link anfragen" data-en="Partner Link">Partner Link</span>
+      </a>
+      <a class="partner-mailto-alt"
+         href="mailto:tech.butterbread@gmx.de?subject=Bot-Erw%C3%A4hnung%20%2F%20Sponsoring%20%E2%80%94%20Spaiderman&body=Hey%20Spaiderman%2C%0A%0AIch%20m%C3%B6chte%20mein%20Unternehmen%20im%20Daily%20Briefing%20erw%C3%A4hnen%20lassen.%0A%0AUnternehmen%3A%0AProdukt%20%2F%20Service%3A%0AWebsite%3A%0AKontakt%3A%0A">
+        📣 <span data-de="Bot-Erwähnung" data-en="Bot Mention">Bot Mention</span>
+      </a>
+      <a class="partner-mailto-alt"
+         href="mailto:tech.butterbread@gmx.de?subject=Company%20Placement%20%E2%80%94%20Spaiderman&body=Hey%20Spaiderman%2C%0A%0AIch%20interessiere%20mich%20f%C3%BCr%20ein%20Company%20Placement%20im%20Bot.%0A%0AUnternehmen%3A%0AWebsite%3A%0AIdee%20%2F%20Wunsch%3A%0AKontakt%3A%0A">
+        🏢 <span data-de="Company Placement" data-en="Company Placement">Company Placement</span>
+      </a>
+    </div>
 
     <p class="partner-note"
-       data-de="Direkte E-Mail an Jan · Antwort innerhalb 24h · Keine Verpflichtung"
-       data-en="Direct email to Jan · Reply within 24h · No commitment">
-      Direct email to Jan · Reply within 24h · No commitment
+       data-de="Direkte E-Mail an Spaiderman · Antwort innerhalb 24h · Keine Verpflichtung"
+       data-en="Direct email to Spaiderman · Reply within 24h · No commitment">
+      Direct email to Spaiderman · Reply within 24h · No commitment
     </p>
   </div>
 </section>
